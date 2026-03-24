@@ -1,0 +1,951 @@
+fileFormatVersion: 2
+guid: b2268bfa73e65684a907718fce2497d7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 9075087445231394225
+    second: PixelPrototypeCharacterB_SideFacingSheet_0
+  - first:
+      213: -396857161191354682
+    second: PixelPrototypeCharacterB_SideFacingSheet_1
+  - first:
+      213: -3724595932435525750
+    second: PixelPrototypeCharacterB_SideFacingSheet_2
+  - first:
+      213: -4257919101404849397
+    second: PixelPrototypeCharacterB_SideFacingSheet_3
+  - first:
+      213: -2379914236180861454
+    second: PixelPrototypeCharacterB_SideFacingSheet_4
+  - first:
+      213: -8096223646702467678
+    second: PixelPrototypeCharacterB_SideFacingSheet_5
+  - first:
+      213: 621666517531783075
+    second: PixelPrototypeCharacterB_SideFacingSheet_6
+  - first:
+      213: -5878479001196190973
+    second: PixelPrototypeCharacterB_SideFacingSheet_7
+  - first:
+      213: -4950990374029428400
+    second: PixelPrototypeCharacterB_SideFacingSheet_8
+  - first:
+      213: 5071818779416438635
+    second: PixelPrototypeCharacterB_SideFacingSheet_9
+  - first:
+      213: -4596974832297184101
+    second: PixelPrototypeCharacterB_SideFacingSheet_10
+  - first:
+      213: 2388890086631160643
+    second: PixelPrototypeCharacterB_SideFacingSheet_11
+  - first:
+      213: 1965353203630908270
+    second: PixelPrototypeCharacterB_SideFacingSheet_12
+  - first:
+      213: 4355178529894657553
+    second: PixelPrototypeCharacterB_SideFacingSheet_13
+  - first:
+      213: 7959085522250265319
+    second: PixelPrototypeCharacterB_SideFacingSheet_14
+  - first:
+      213: 4062880762391201189
+    second: PixelPrototypeCharacterB_SideFacingSheet_15
+  - first:
+      213: -3240812182204530150
+    second: PixelPrototypeCharacterB_SideFacingSheet_16
+  - first:
+      213: -5279387455618833743
+    second: PixelPrototypeCharacterB_SideFacingSheet_17
+  - first:
+      213: -3446959542106256203
+    second: PixelPrototypeCharacterB_SideFacingSheet_18
+  - first:
+      213: -7321595443811230040
+    second: PixelPrototypeCharacterB_SideFacingSheet_19
+  - first:
+      213: -5623785708094335061
+    second: PixelPrototypeCharacterB_SideFacingSheet_20
+  - first:
+      213: 6585742886785409068
+    second: PixelPrototypeCharacterB_SideFacingSheet_21
+  - first:
+      213: 7118758816816109843
+    second: PixelPrototypeCharacterB_SideFacingSheet_22
+  - first:
+      213: -692037694752370670
+    second: PixelPrototypeCharacterB_SideFacingSheet_23
+  - first:
+      213: -7635226402378094867
+    second: PixelPrototypeCharacterB_SideFacingSheet_24
+  - first:
+      213: 7499086635373326297
+    second: PixelPrototypeCharacterB_SideFacingSheet_25
+  - first:
+      213: 7716323967947353332
+    second: PixelPrototypeCharacterB_SideFacingSheet_26
+  - first:
+      213: 332785912725288943
+    second: PixelPrototypeCharacterB_SideFacingSheet_27
+  - first:
+      213: -8720604914492345710
+    second: PixelPrototypeCharacterB_SideFacingSheet_28
+  - first:
+      213: -2794558626116727207
+    second: PixelPrototypeCharacterB_SideFacingSheet_29
+  - first:
+      213: 6261567187785764329
+    second: PixelPrototypeCharacterB_SideFacingSheet_30
+  - first:
+      213: -3641845221028157021
+    second: PixelPrototypeCharacterB_SideFacingSheet_31
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 20
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 350
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb2a51d4cfdcabe43827c8c9258acf9e
+      internalID: -984937262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 350
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6794a6e0f5342bb43a95aa9166f98d81
+      internalID: -1046506800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_2
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 350
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aec362e0687b66e40b353be46f373820
+      internalID: 143363746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_3
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 350
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15ae4e46e4e1e1245b727eebfe141547
+      internalID: 1042456949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 300
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38852235ada76144ea7c126558451d8f
+      internalID: 1535178126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_5
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 300
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5086bad4ac253bb438bbc8f8377d6730
+      internalID: -1751285393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_6
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 300
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaea2f89e9ca66f46a79325f7d2e3b0c
+      internalID: 723571317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_7
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 300
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea3ebab5d0eb18442bc601b2698858f9
+      internalID: 1725629023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 250
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bec046eb976d69b46b85aae487cca969
+      internalID: 722843888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_9
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 250
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c24371afcc0ab942812396f473f598f
+      internalID: -589547773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_10
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 250
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 389936a1c5a82ec4e914142b6e1f52f3
+      internalID: 1279697355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_11
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 250
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 111692fd24ba77f40b06b9fab7ce1d59
+      internalID: 584283324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 200
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 572057043887c184abd23a26b39adb07
+      internalID: -939114997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_13
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 200
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f236e989e2d1524981411fc47924a5c
+      internalID: -1076296183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_14
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 200
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ed6eec0bf7980a42be9d4fbf333e0d5
+      internalID: -1926469757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_15
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 200
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 136e77da8fe30d34183c465a5131dc11
+      internalID: -596589739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 150
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4eddeddfb13cd1e4ab807a567e165a73
+      internalID: -2065859518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_17
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 150
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aadce7a1bfa45ae41a460800003024fc
+      internalID: -1208502956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_18
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 150
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9762a2373bb291b46b8abe7df86b945a
+      internalID: -323502585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_19
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 150
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94e998ab3035e764691c6908e8406f0b
+      internalID: -168761210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 100
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f44223662742e324f9faa36709f2e235
+      internalID: 338125610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_21
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 100
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4bbfcfd951680d4f9eb4686673c7405
+      internalID: 1248203131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_22
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 100
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cae66a25814debe4daf11d65b89fb210
+      internalID: -222027090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_23
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 100
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fcdc228161006b4ea121a06b88eaf30
+      internalID: 1225254161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 50
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb410b606b7b0ea47aa4659fe9f15fc3
+      internalID: -1030711985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_25
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 50
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2b35210fb4f5374788eaa3388d0e162
+      internalID: 1914519139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_26
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 50
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65da07aeadc0e184989146fa186519ac
+      internalID: -295778536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_27
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 50
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 749b1a90160da394aa60d3714fa82043
+      internalID: -1069420724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccc471ede9ac84540aadd0ba39ac4dbd
+      internalID: -1658809439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_29
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 0
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f53b785124a48ac48a8aac014492e12d
+      internalID: -911635275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_30
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 007dd1bbda2d068448e6ca4aaca28b7a
+      internalID: 941423139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelPrototypeCharacterB_SideFacingSheet_31
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f92c16f3678136469e26ca76d9dd1d4
+      internalID: -259451878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":50.0,"y":50.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.029999999329447748},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      PixelPrototypeCharacterB_SideFacingSheet_0: -984937262
+      PixelPrototypeCharacterB_SideFacingSheet_1: -1046506800
+      PixelPrototypeCharacterB_SideFacingSheet_10: 1279697355
+      PixelPrototypeCharacterB_SideFacingSheet_11: 584283324
+      PixelPrototypeCharacterB_SideFacingSheet_12: -939114997
+      PixelPrototypeCharacterB_SideFacingSheet_13: -1076296183
+      PixelPrototypeCharacterB_SideFacingSheet_14: -1926469757
+      PixelPrototypeCharacterB_SideFacingSheet_15: -596589739
+      PixelPrototypeCharacterB_SideFacingSheet_16: -2065859518
+      PixelPrototypeCharacterB_SideFacingSheet_17: -1208502956
+      PixelPrototypeCharacterB_SideFacingSheet_18: -323502585
+      PixelPrototypeCharacterB_SideFacingSheet_19: -168761210
+      PixelPrototypeCharacterB_SideFacingSheet_2: 143363746
+      PixelPrototypeCharacterB_SideFacingSheet_20: 338125610
+      PixelPrototypeCharacterB_SideFacingSheet_21: 1248203131
+      PixelPrototypeCharacterB_SideFacingSheet_22: -222027090
+      PixelPrototypeCharacterB_SideFacingSheet_23: 1225254161
+      PixelPrototypeCharacterB_SideFacingSheet_24: -1030711985
+      PixelPrototypeCharacterB_SideFacingSheet_25: 1914519139
+      PixelPrototypeCharacterB_SideFacingSheet_26: -295778536
+      PixelPrototypeCharacterB_SideFacingSheet_27: -1069420724
+      PixelPrototypeCharacterB_SideFacingSheet_28: -1658809439
+      PixelPrototypeCharacterB_SideFacingSheet_29: -911635275
+      PixelPrototypeCharacterB_SideFacingSheet_3: 1042456949
+      PixelPrototypeCharacterB_SideFacingSheet_30: 941423139
+      PixelPrototypeCharacterB_SideFacingSheet_31: -259451878
+      PixelPrototypeCharacterB_SideFacingSheet_4: 1535178126
+      PixelPrototypeCharacterB_SideFacingSheet_5: -1751285393
+      PixelPrototypeCharacterB_SideFacingSheet_6: 723571317
+      PixelPrototypeCharacterB_SideFacingSheet_7: 1725629023
+      PixelPrototypeCharacterB_SideFacingSheet_8: 722843888
+      PixelPrototypeCharacterB_SideFacingSheet_9: -589547773
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
