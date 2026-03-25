@@ -39,9 +39,11 @@ public class Spell_Dig : Spell
 		}
 
 		_owner.Input.DoMapNodeSelection(null);
-		
+
 		HUDExcavationTargeting.OnSkip -= DigSkipped;
 		HUDExcavationTargeting.Instance.CompleteExcavation();
+
+		Destroy(gameObject);
 	}
 
 	private void DigSkipped()
