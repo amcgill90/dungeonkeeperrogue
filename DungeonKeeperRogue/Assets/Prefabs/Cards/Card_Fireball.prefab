@@ -57,6 +57,18 @@ PrefabInstance:
       value: Fireball
       objectReference: {fileID: 0}
     - target: {fileID: 8383202824859676916, guid: dff1b823ee7b44474abd63111a60ad4d, type: 3}
+      propertyPath: _icon
+      value: 
+      objectReference: {fileID: 21300000, guid: ead52c6764d378e48ad4f7ae6abe7b98, type: 3}
+    - target: {fileID: 8383202824859676916, guid: dff1b823ee7b44474abd63111a60ad4d, type: 3}
+      propertyPath: _name
+      value: Fireball
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383202824859676916, guid: dff1b823ee7b44474abd63111a60ad4d, type: 3}
+      propertyPath: _description
+      value: Deal 3 damage to the boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383202824859676916, guid: dff1b823ee7b44474abd63111a60ad4d, type: 3}
       propertyPath: _prefabToSpawn
       value: 
       objectReference: {fileID: 3628572930411390037, guid: 52e1b199c8ad34f6ca6a2d3512ea6f0a, type: 3}
