@@ -20,6 +20,8 @@ public class Hand : MonoBehaviour
 
 	private Vector3 TargetPosition => _shown ? _showPosition.position : _hidePosition.position;
 
+	public List<Card> CardsInHand => new(_cards);
+
 
 	public void Init(Player owner)
 	{

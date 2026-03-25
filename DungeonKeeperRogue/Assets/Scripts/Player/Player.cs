@@ -92,9 +92,9 @@ public class Player : MapActor
 		OnCoinsChanged?.Invoke(amount, _coins);
 	}
 
-	private void DrawCardsToHand(int amount)
+	public void DrawCardsToHand(int amount)
 	{
-		List<Card> cards = _deck.DrawCards(amount);
+		List<Card> cards = _deck.DrawCards(amount, _hand.CardsInHand);
 		if (cards.Count == 0)
 		{
 			return;

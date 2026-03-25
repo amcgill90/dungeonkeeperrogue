@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using DungeonKeeperRogue.Gameplay;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ public class MapNodeReward_Cards : MapNodeReward
 	
     public override void Trigger()
     {
-        Scenario.Instance.Player.Deck.DrawCards(_amount);
+        Scenario.Instance.Player.DrawCardsToHand(_amount);
         var flyingText = Instantiate(_flyingTextPrefab, transform.position, Quaternion.identity);
         flyingText.Init(_amount.ToString());
         StartCoroutine(DestroyRoutine());

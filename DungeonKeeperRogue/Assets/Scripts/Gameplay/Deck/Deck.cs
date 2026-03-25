@@ -56,7 +56,7 @@ public class Deck : MonoBehaviour
 		_cards.Clear();
 	}
 
-	public List<Card> DrawCards(int number)
+	public List<Card> DrawCards(int number, List<Card> ineligibleCards = null)
 	{
 		List<Card> cards = new();
 
@@ -69,6 +69,11 @@ public class Deck : MonoBehaviour
 				// no more cards available, refresh from discard pile and immediately discard cards picked (so we don't pick again)
 				RefreshFromDiscardPile();
 				DiscardCards(cards);
+
+				if (ineligibleCards != null && ineligibleCards.Count > 0)
+				{
+					DiscardCards(ineligibleCards);
+				}
 
 				if (_cards.Count == 0)
 				{
