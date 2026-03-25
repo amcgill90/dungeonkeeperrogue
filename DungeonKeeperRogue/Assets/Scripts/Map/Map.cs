@@ -79,16 +79,18 @@ public class Map : MonoSingleton<Map>
 		}
 	}
 
-	public void ShowNodeOptions(NodeSelectionFilterOptions options)
+	public void ShowNodeHighlights(NodeSelectionFilterOptions options, MapNode hovered)
 	{
 		foreach (MapNode node in _mapNodes)
 		{
+			bool isControlled = IsNodeControlledByPlayer(node);
 			bool isOption = options != null
 				&& options.IsDiggableSatisfied(node)
 				&& options.IsControlledSatisfied(node)
 				&& options.IsAdjacentToControlledSatisfied(node);
 
-			node.SetOption(isOption);
+			node.ShowControlled(isControlled);
+			node.SetHighlighted(isOption ? (hovered == node ? MapNode.HighlightState.Hovered : MapNode.HighlightState.Option) : MapNode.HighlightState.None);
 		}
 	}
 

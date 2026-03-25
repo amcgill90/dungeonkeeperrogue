@@ -32,35 +32,21 @@ public class PlayerInput : MonoBehaviour
 		Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(mouse.position.value.x, mouse.position.value.y, -Camera.main.transform.position.z));
 		MapNode nodeUnderMouse = null;
 
-		// set which nodes are options given current filter
-		Map.Instance.ShowNodeOptions(filter);
-
 		if (Physics2D.Raycast(worldPos, Vector2.zero, _uiContactFilter, _raycastHits) > 0)
 		{
 			RaycastHit2D hit = _raycastHits[0];
 			nodeUnderMouse = hit.collider.GetComponentInParent<MapNode>();
 
-			if (nodeUnderMouse != null)
+			if (nodeUnderMouse != null && (filter == null || filter.IsValidOption(nodeUnderMouse) == false))
 			{
-				// determine if this node is valid
-				if (filter.IsValidOption(nodeUnderMouse) == false)
-				{
-					nodeUnderMouse = null;
-				}
+				nodeUnderMouse = null;
 			}
-
-			if (nodeUnderMouse != null)
-			{
-				nodeUnderMouse.SetHighlighted(true);
-			}
-		}
-
-		if (_lastHighlightedNode != null && _lastHighlightedNode != nodeUnderMouse)
-		{
-			_lastHighlightedNode.SetHighlighted(false);
 		}
 
 		_lastHighlightedNode = nodeUnderMouse;
+
+		// set which nodes are options given current filter
+		Map.Instance.ShowNodeHighlights(filter, nodeUnderMouse);
 
 		return mouse.leftButton.wasPressedThisFrame ? nodeUnderMouse : null;
 	}

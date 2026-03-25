@@ -3,15 +3,24 @@ using UnityEngine;
 
 public class MapNode : MonoBehaviour
 {
+	public enum HighlightState
+	{
+		None,
+		Option,
+		Hovered
+	}
+
 	[SerializeField] private bool _isBase;
 	[SerializeField] private GameObject _prefabToInstantiate;
-	[SerializeField] private GameObject _highlight;
-	[SerializeField] private GameObject _option;
+	[SerializeField] private SpriteRenderer _highlight;
+	[SerializeField] private Color _highlightOptionColour;
+	[SerializeField] private GameObject _isControlledHighlight;
 
 
 	private Vector2Int _coordinates;
 	private GameObject _instancedObject;
 	private Diggable _diggable;
+	private Color _defaultHighlightColour;
 
 
 	public Vector2Int Coordinates => _coordinates;
@@ -19,6 +28,11 @@ public class MapNode : MonoBehaviour
 	public Diggable Diggable => _diggable;
 	public bool IsBase => _isBase;
 
+
+	private void Awake()
+	{
+		_defaultHighlightColour = _highlight.color;
+	}
 
 	private void OnEnable()
 	{
@@ -37,21 +51,25 @@ public class MapNode : MonoBehaviour
 		if (_prefabToInstantiate != null)
 		{
 			_instancedObject = Instantiate(_prefabToInstantiate, transform);
-			_diggable = _instancedObject.GetComponent<Diggable>();
 		}
 
-		SetHighlighted(false);
-		SetOption(false);
+		_diggable = GetComponentInChildren<Diggable>();
+
+		SetHighlighted(HighlightState.None);
+		ShowControlled(false);
 	}
 
-	public void SetHighlighted(bool highlight)
+	public void SetHighlighted(HighlightState highlight)
 	{
-		_highlight.SetActive(highlight);
+		Color colour = highlight == HighlightState.Option ? _highlightOptionColour : _defaultHighlightColour;
+
+		_highlight.color = colour;
+		_highlight.gameObject.SetActive(highlight != HighlightState.None);
 	}
 
-	public void SetOption(bool option)
+	public void ShowControlled(bool show)
 	{
-		_option.SetActive(option);
+		_isControlledHighlight.SetActive(show);
 	}
 
 	private void OnDig(Diggable diggable)
