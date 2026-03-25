@@ -65,6 +65,10 @@ PrefabInstance:
       value: Dig!
       objectReference: {fileID: 0}
     - target: {fileID: 8383202824859676916, guid: dff1b823ee7b44474abd63111a60ad4d, type: 3}
+      propertyPath: _goldCost
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383202824859676916, guid: dff1b823ee7b44474abd63111a60ad4d, type: 3}
       propertyPath: _description
       value: Excavate 2
       objectReference: {fileID: 0}

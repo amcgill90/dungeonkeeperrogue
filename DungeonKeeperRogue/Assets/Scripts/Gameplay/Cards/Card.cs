@@ -12,11 +12,13 @@ public class Card : MonoBehaviour
 	[SerializeField] private string _name;
 	[SerializeField] private string _description;
 	[SerializeField] private Sprite _icon;
+	[SerializeField] private int _goldCost;
 	
 	[Header("Card detail visuals")] 
 	[SerializeField] private TMP_Text _nameTextField;
 	[SerializeField] private TMP_Text _descriptionTextField;
 	[SerializeField] private SpriteRenderer _iconSpriteRenderer;
+	[SerializeField] private TMP_Text _costTextField;
 
 	[Header("Events")]
 	[SerializeField] private UnityEvent _onHighlightedEvent;
@@ -41,6 +43,7 @@ public class Card : MonoBehaviour
 		_nameTextField.SetText(_name);
 		_descriptionTextField.SetText(_description);
 		_iconSpriteRenderer.sprite = _icon;
+		_costTextField.SetText(_goldCost.ToString());
 	}
 
 	public IEnumerator PlayCard()

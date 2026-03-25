@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 4454558290726727933}
   - component: {fileID: 6117555447431192996}
   m_Layer: 0
-  m_Name: CoinCost
+  m_Name: GoldCost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -465,7 +465,7 @@ GameObject:
   - component: {fileID: 2044432234308303352}
   - component: {fileID: 9094075236839574443}
   m_Layer: 0
-  m_Name: CoinCostBacking
+  m_Name: GoldCostBacking
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -597,9 +597,11 @@ MonoBehaviour:
   _name: 
   _description: 
   _icon: {fileID: 0}
+  _goldCost: 0
   _nameTextField: {fileID: 271921216370241328}
   _descriptionTextField: {fileID: 3542214484874017979}
   _iconSpriteRenderer: {fileID: 3095764022540098539}
+  _costTextField: {fileID: 6117555447431192996}
   _onHighlightedEvent:
     m_PersistentCalls:
       m_Calls:
