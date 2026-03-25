@@ -6,6 +6,10 @@ public class HUDExcavationTargeting : MonoSingleton<HUDExcavationTargeting>
     [SerializeField] private TMP_Text _excavationCountText;
     [SerializeField] private string _excavationCountFormat;
 
+	public delegate void SkipDelegate();
+	public static event SkipDelegate OnSkip;
+
+
     protected override void OnInitialized()
     {
         HideUI();
@@ -32,9 +36,8 @@ public class HUDExcavationTargeting : MonoSingleton<HUDExcavationTargeting>
         HUDCombatInfo.Instance.ShowEndTurnButton();
     }
 
-    public void SkipExcavationPressed()
-    {
-        // TODO: end the excavation functionality early
-        CompleteExcavation();
-    }
+	public void SkipExcavation()
+	{
+		OnSkip?.Invoke();
+	}
 }

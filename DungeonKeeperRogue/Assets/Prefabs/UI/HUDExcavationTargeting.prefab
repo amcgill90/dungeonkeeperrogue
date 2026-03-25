@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f3a253c21054a469e5de8e5cbc98ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HUDExcavationTargeting
-  _excavationCountText: {fileID: 2343002478011562013}
+  _excavationCountText: {fileID: 8093585110767362859}
   _excavationCountFormat: 'Dig: {0}/{1}'
 --- !u!1 &5113235967207349320
 GameObject:
@@ -449,7 +449,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3591238013995796286}
         m_TargetAssemblyTypeName: HUDExcavationTargeting, Assembly-CSharp
-        m_MethodName: SkipExcavationPressed
+        m_MethodName: SkipExcavation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

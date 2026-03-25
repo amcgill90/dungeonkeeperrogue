@@ -6,6 +6,9 @@ public class Spell_Dig : Spell
 	[SerializeField] private int _digsAllowed = 2;
 
 	private int _digCount = 0;
+
+	public int DigsRemaining => _digsAllowed - _digCount;
+
 	private static readonly NodeSelectionFilterOptions nodeSelectOptions = new NodeSelectionFilterOptions()
 	{
 		diggable = SelectionFilter.True,
@@ -15,6 +18,9 @@ public class Spell_Dig : Spell
 
 	public override IEnumerator CastSpell()
 	{
+		HUDExcavationTargeting.Instance.ShowExcavationUI(_digsAllowed, DigsRemaining);
+		HUDExcavationTargeting.OnSkip += DigSkipped;
+
 		// dig needs to receive more player input to determine location to dig
 		while (_digCount < _digsAllowed)
 		{
@@ -25,11 +31,21 @@ public class Spell_Dig : Spell
 				// player just selected this node, so dig here
 				selectedNode.Diggable.Dig();
 				++_digCount;
+
+				HUDExcavationTargeting.Instance.ShowExcavationUI(_digsAllowed, DigsRemaining);
 			}
 
 			yield return null;
 		}
 
 		_owner.Input.DoMapNodeSelection(null);
+		
+		HUDExcavationTargeting.OnSkip -= DigSkipped;
+		HUDExcavationTargeting.Instance.CompleteExcavation();
+	}
+
+	private void DigSkipped()
+	{
+		_digCount = _digsAllowed;
 	}
 }
