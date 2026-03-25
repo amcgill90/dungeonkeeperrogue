@@ -1,0 +1,40 @@
+using TMPro;
+using UnityEngine;
+
+public class HUDExcavationTargeting : MonoSingleton<HUDExcavationTargeting>
+{
+    [SerializeField] private TMP_Text _excavationCountText;
+    [SerializeField] private string _excavationCountFormat;
+
+    protected override void OnInitialized()
+    {
+        HideUI();
+    }
+    
+    private void HideUI()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void ShowExcavationUI(int totalExcavations, int excavationsRemaining)
+    {
+        gameObject.SetActive(true);
+        var excavationString = string.Format(_excavationCountFormat, totalExcavations, excavationsRemaining);
+        _excavationCountText.SetText(excavationString);
+        
+        HUDCombatInfo.Instance.HideEndTurnButton();
+    }
+    
+    public void CompleteExcavation()
+    {
+        HideUI();
+        
+        HUDCombatInfo.Instance.ShowEndTurnButton();
+    }
+
+    public void SkipExcavationPressed()
+    {
+        // TODO: end the excavation functionality early
+        CompleteExcavation();
+    }
+}
