@@ -49,7 +49,7 @@ public class Room_TeslaCoil : MapUnitBehaviour
         
         _travellingParticles.Stop();
 
-        DamageDetails damageDetails = new(_damageAmount);
+        DamageDetails damageDetails = new(_damageAmount, DamageSource.Room);
         _targetUnit.Health.TryDamage(damageDetails);
         
         yield return null;

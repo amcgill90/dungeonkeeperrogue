@@ -32,6 +32,7 @@ namespace DungeonKeeperRogue.Gameplay
         public Team Team => _team;
 
         public event Action<DamageDetails> OnDamageAttempted;
+		public static event Action<Health, DamageDetails> OnDamageAttemptedAll;
         public event Action<DamageDetails> OnDamageTaken;
         public event Action<int> OnHeal;
         public event Action OnHealthChanged;
@@ -92,6 +93,7 @@ namespace DungeonKeeperRogue.Gameplay
             }
         
             OnDamageAttempted?.Invoke(details);
+			OnDamageAttemptedAll?.Invoke(this, details);
             
             int baseDamage = (int)details._damage;
             if (baseDamage <= 0)

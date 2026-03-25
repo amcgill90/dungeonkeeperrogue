@@ -35,7 +35,7 @@ public class Spell_DamageRandom : Spell
 		
 			yield return new WaitForSeconds(_damageDelay);
 		
-			DamageDetails damageDetails = new(_damageToDeal);
+			DamageDetails damageDetails = new(_damageToDeal, DamageSource.Spell);
 			unit.Health.TryDamage(damageDetails);
 			
 			yield return new WaitForSeconds(_timeBetweenDamageInstances);

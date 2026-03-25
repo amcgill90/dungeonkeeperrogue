@@ -47,7 +47,7 @@ public class Room_MagmaChamber : MapUnitBehaviour
         var secondStageTimer = 0f;
         Instantiate(_fxObject, transform.position, Quaternion.identity);
 
-        DamageDetails damageDetails = new(_damageAmount);
+        DamageDetails damageDetails = new(_damageAmount, DamageSource.Room);
         _targetUnit.Health.TryDamage(damageDetails);
 	}
 }
