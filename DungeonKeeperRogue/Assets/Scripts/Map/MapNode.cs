@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class MapNode : MonoBehaviour
 {
+	[SerializeField] private bool _isBase;
 	[SerializeField] private GameObject _prefabToInstantiate;
 	[SerializeField] private GameObject _highlight;
 	[SerializeField] private GameObject _option;
@@ -16,6 +17,7 @@ public class MapNode : MonoBehaviour
 	public Vector2Int Coordinates => _coordinates;
 	public GameObject InstancedObject => _instancedObject;
 	public Diggable Diggable => _diggable;
+	public bool IsBase => _isBase;
 
 
 	private void OnEnable()

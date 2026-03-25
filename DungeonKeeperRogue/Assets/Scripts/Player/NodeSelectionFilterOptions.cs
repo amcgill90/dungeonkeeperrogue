@@ -26,9 +26,21 @@ public class NodeSelectionFilterOptions
 
 	public bool IsControlledSatisfied(MapNode node)
 	{
+		if (controlled == SelectionFilter.Any)
+		{
+			return true;
+		}
+
+		// first get the controlled state of the node
+		bool isControlled = Map.Instance.IsNodeControlledByPlayer(node);
+
 		switch (controlled)
 		{
-			
+			case SelectionFilter.True:
+				return isControlled;
+
+			case SelectionFilter.False:
+				return isControlled == false;
 		}
 
 		return false;
@@ -36,6 +48,27 @@ public class NodeSelectionFilterOptions
 
 	public bool IsAdjacentToControlledSatisfied(MapNode node)
 	{
+		if (adjacentToControlled == SelectionFilter.Any)
+		{
+			return true;
+		}
+
+		bool isControlled = Map.Instance.IsAdjacentNodeControlledByPlayer(node);
+
+		switch (adjacentToControlled)
+		{
+			case SelectionFilter.True:
+				return isControlled;
+
+			case SelectionFilter.False:
+				return isControlled == false;
+		}
+
 		return false;
+	}
+
+	public bool IsValidOption(MapNode node)
+	{
+		return IsDiggableSatisfied(node) && IsControlledSatisfied(node) && IsAdjacentToControlledSatisfied(node);
 	}
 }

@@ -88,4 +88,74 @@ public class Map : MonoSingleton<Map>
 			node.SetOption(isOption);
 		}
 	}
+
+	public bool IsNodeControlledByPlayer(MapNode node, List<MapNode> checkedNodes = null)
+	{
+		// node is controlled by the player if there is a dug out path from it, back to the player base node
+		if (checkedNodes == null)
+		{
+			checkedNodes = new();
+		}
+
+		if (checkedNodes.Contains(node))
+		{
+			return false;
+		}
+
+		checkedNodes.Add(node);
+
+		// check that this node is dug out
+		if (node.Diggable != null)
+		{
+			return false;
+		}
+
+		// check if this is the player base node
+		if (node.IsBase)
+		{
+			return true;
+		}
+
+		// check that adjacent nodes
+		return IsAdjacentNodeControlledByPlayer(node, checkedNodes);
+	}
+
+	public bool IsAdjacentNodeControlledByPlayer(MapNode node, List<MapNode> checkedNodes = null)
+	{
+		if (checkedNodes == null)
+		{
+			checkedNodes = new();
+		}
+
+		if (checkedNodes.Contains(node))
+		{
+			return false;
+		}
+
+		// left
+		if (node.Coordinates.x > 0 && IsNodeControlledByPlayer(_mapNodes[node.Coordinates.x - 1, node.Coordinates.y], checkedNodes))
+		{
+			return true;
+		}
+
+		// right
+		if (node.Coordinates.x < _currentConfig.Resolution.x - 1 && IsNodeControlledByPlayer(_mapNodes[node.Coordinates.x + 1, node.Coordinates.y], checkedNodes))
+		{
+			return true;
+		}
+
+		// down
+		if (node.Coordinates.y > 0 && IsNodeControlledByPlayer(_mapNodes[node.Coordinates.x, node.Coordinates.y - 1], checkedNodes))
+		{
+			return true;
+		}
+
+		// up
+		if (node.Coordinates.y < _currentConfig.Resolution.y - 1 && IsNodeControlledByPlayer(_mapNodes[node.Coordinates.x, node.Coordinates.y + 1], checkedNodes))
+		{
+			return true;
+		}
+
+		return false;
+	}
 }

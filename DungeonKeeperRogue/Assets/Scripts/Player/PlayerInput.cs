@@ -43,7 +43,7 @@ public class PlayerInput : MonoBehaviour
 			if (nodeUnderMouse != null)
 			{
 				// determine if this node is valid
-				if (filter.diggable != SelectionFilter.False && nodeUnderMouse.Diggable == null)
+				if (filter.IsValidOption(nodeUnderMouse) == false)
 				{
 					nodeUnderMouse = null;
 				}
