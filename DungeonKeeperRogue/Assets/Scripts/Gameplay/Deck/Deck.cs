@@ -69,6 +69,12 @@ public class Deck : MonoBehaviour
 				// no more cards available, refresh from discard pile and immediately discard cards picked (so we don't pick again)
 				RefreshFromDiscardPile();
 				DiscardCards(cards);
+
+				if (_cards.Count == 0)
+				{
+					// if we still have nothing, we're out of cards, so we're done
+					break;
+				}
 			}
 
 			int index = _random.Next(_cards.Count);
