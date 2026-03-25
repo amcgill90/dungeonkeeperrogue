@@ -140,6 +140,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5049524645392234478, guid: a36790e1a1630401d9564c5b732b7f28, type: 3}
+      propertyPath: _tag
+      value: 
+      objectReference: {fileID: 11400000, guid: 27b556521ae5c7640be5d317a5f687cb, type: 2}
+    - target: {fileID: 5049524645392234478, guid: a36790e1a1630401d9564c5b732b7f28, type: 3}
       propertyPath: _isBase
       value: 1
       objectReference: {fileID: 0}

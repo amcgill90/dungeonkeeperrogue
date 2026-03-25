@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MapActor
 {
 	[SerializeField] private BoxCollider2D _handArea;
 	[SerializeField] private Hand _hand;
@@ -17,10 +17,11 @@ public class Player : MonoBehaviour
 	public Hand Hand => _hand;
 	public PlayerInput Input => _input;
 	public int Coins => _coins;
-
-
-	public void Init()
+	
+	public override void Init()
 	{
+		HUDCombatInfo.OnEndTurn += OnEndTurn;
+		
 		GameObject deckGo = new GameObject("Deck");
 		deckGo.transform.SetParent(transform);
 
@@ -31,6 +32,22 @@ public class Player : MonoBehaviour
 
 		// testing
 		StartTurn();
+	}
+
+	private void SetHandActive(bool active)
+	{
+		_hand.gameObject.SetActive(active);
+	}
+
+	protected override void OnTurnStartInternal()
+	{
+		SetHandActive(true);
+	}
+
+	private void OnEndTurn()
+	{
+		SetHandActive(false);
+		_isTurnComplete = true;
 	}
 
 	public void StartTurn()

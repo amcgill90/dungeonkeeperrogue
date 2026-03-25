@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 
@@ -10,6 +9,9 @@ public class HUDCombatInfo : MonoSingleton<HUDCombatInfo>
     [SerializeField] private ProgressBar _bossHealthBar;
     [SerializeField] private GameObject _endTurnButton;
 
+    public delegate void EndTurnDelegate();
+    public static event EndTurnDelegate OnEndTurn;
+    
     protected override void OnInitialized()
     {
         // TODO: subscribe to events
@@ -46,7 +48,7 @@ public class HUDCombatInfo : MonoSingleton<HUDCombatInfo>
     public void EndTurnButtonPressed()
     {
         HideEndTurnButton();
-        // TODO: end turn functionality
+        OnEndTurn?.Invoke();
     }
 
     // When placing a room or excavating, probably should hide this button

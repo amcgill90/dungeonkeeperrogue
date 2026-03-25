@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class MapNode : MonoBehaviour
@@ -10,13 +9,13 @@ public class MapNode : MonoBehaviour
 		Hovered
 	}
 
+	[SerializeField] private NodeTag _tag;
 	[SerializeField] private bool _isBase;
 	[SerializeField] private GameObject _prefabToInstantiate;
 	[SerializeField] private SpriteRenderer _highlight;
 	[SerializeField] private Color _highlightOptionColour;
 	[SerializeField] private GameObject _isControlledHighlight;
-
-
+	
 	private Vector2Int _coordinates;
 	private GameObject _instancedObject;
 	private Diggable _diggable;
@@ -105,5 +104,10 @@ public class MapNode : MonoBehaviour
 			reward.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
 			reward.Trigger();
 		}
+	}
+
+	public bool HasTag(NodeTag nodeTag)
+	{
+		return _tag && _tag == nodeTag;
 	}
 }

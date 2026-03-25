@@ -16,6 +16,9 @@ public class Map : MonoSingleton<Map>
 	private static List<MapNode> _checkedNodesCache = new();
 	
 	public MapConfig CurrentConfig => _currentConfig;
+	public float NodeXInc { get; private set; }
+	public float NodeYInc { get; private set; }
+
 
 	private void OnEnable()
 	{
@@ -54,17 +57,18 @@ public class Map : MonoSingleton<Map>
 		Vector2 mapSize = new Vector2(_nodeSize * _currentConfig.Resolution.x, _nodeSize * _currentConfig.Resolution.y);
 		float halfX = mapSize.x * 0.5f;
 		float halfY = mapSize.y * 0.5f;
-		float xInc = _currentConfig.Resolution.x > 1 ? mapSize.x / (_currentConfig.Resolution.x - 1) : 0f;
-		float yInc = _currentConfig.Resolution.y > 1 ? -mapSize.y / (_currentConfig.Resolution.y - 1) : 0f;
+		
+		NodeXInc = _currentConfig.Resolution.x > 1 ? mapSize.x / (_currentConfig.Resolution.x - 1) : 0f;
+		NodeYInc = _currentConfig.Resolution.y > 1 ? -mapSize.y / (_currentConfig.Resolution.y - 1) : 0f;
 
 		// generate node instances and add to array
 		for (int x = 0; x < _currentConfig.Resolution.x; ++x)
 		{
-			float xPos = x * xInc - halfX;
+			float xPos = x * NodeXInc - halfX;
 
 			for (int y = 0; y < _currentConfig.Resolution.y; ++y)
 			{
-				float yPos = y * yInc + halfY;
+				float yPos = y * NodeYInc + halfY;
 				MapNode prefab = _currentConfig.GetNode(x, y);
 				if (prefab == null)
 				{
@@ -157,5 +161,25 @@ public class Map : MonoSingleton<Map>
 		}
 
 		return false;
+	}
+
+	public MapNode FindNodeWithTag(NodeTag nodeTag)
+	{
+		int rows = _mapNodes.GetLength(0);
+		int columns = _mapNodes.GetLength(1);
+
+		for (int x = 0; x < rows; ++x)
+		{
+			for (int y = 0; y < columns; ++y)
+			{
+				MapNode node = _mapNodes[y, x];
+				if (node.HasTag(nodeTag))
+				{
+					return node;
+				}
+			}
+		}
+
+		return null;
 	}
 }
