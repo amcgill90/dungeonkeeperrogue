@@ -6,9 +6,12 @@ public class MapUnitBehaviour_MoveInDirection : MapUnitBehaviour
 {
     [SerializeField] private float _moveSeconds;
     [SerializeField] private Vector2 _moveDirection;
+    [SerializeField] private GameObject _movementIndicator;
     
     public override IEnumerator OnStartOfTurn(MapUnit unit, MapUnitBehaviourContext context)
     {
+        _movementIndicator.SetActive(false);
+        
         Vector2 moveDir = _moveDirection.normalized;
         moveDir.x *= Scenario.Instance.Map.NodeXInc;
         moveDir.y *= Scenario.Instance.Map.NodeYInc;
@@ -23,5 +26,11 @@ public class MapUnitBehaviour_MoveInDirection : MapUnitBehaviour
             unit.SetPosition(Vector2.Lerp(currentPosition, moveTarget, elapsedTime / _moveSeconds));
             yield return null;
         }
+    }
+
+    public override IEnumerator OnEndOfTurn(MapUnit unit, MapUnitBehaviourContext context)
+    {
+        _movementIndicator.SetActive(true);
+        yield break;
     }
 }
