@@ -1,3 +1,4 @@
+using DungeonKeeperRogue.UI;
 using UnityEngine;
 
 namespace DungeonKeeperRogue.Gameplay
@@ -13,6 +14,7 @@ namespace DungeonKeeperRogue.Gameplay
         [Header("Scenario Components")]
         [SerializeField] private Map _map;
         [SerializeField] private TurnController _turnController;
+        [SerializeField] private UIScenarioOutcomePopup _outcomePopup;
 
         private bool _isScenarioComplete;
         private Player _player;
@@ -25,9 +27,8 @@ namespace DungeonKeeperRogue.Gameplay
         public TurnController TurnController => _turnController;
 
         public delegate void ScenarioEndEvent(Team winner);
-        public event ScenarioEndEvent OnScenarioEnd;
+        public static event ScenarioEndEvent OnScenarioEnd;
         
-
         protected override void OnInitialized()
         {
             _player = SpawnMapActor(_playerPrefab);
@@ -70,8 +71,10 @@ namespace DungeonKeeperRogue.Gameplay
                 return false;
             }
             
-            Debug.Log($"[Scenario]: scenario won by {winner}!");
-            OnScenarioEnd?.Invoke(winner);
+            //Debug.Log($"[Scenario]: scenario won by {winner}!");
+            
+            Team winningTeam = winner;
+            _outcomePopup.Open(winner, () => OnScenarioEnd?.Invoke(winningTeam));
 
 			return true;
         }

@@ -1,19 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoSingleton<PlayerManager>
+public class PlayerManager : MonoBehaviour
 {
-	[SerializeField] private Player _playerPrefab;
-
-	private Player _player;
-
-	public Player Player => _player;
-
-
-	protected override void OnInitialized()
+	[SerializeField] private List<Card> _defaultDeckCards;
+	
+	public static PlayerState PlayerState { get; private set; }
+	
+	public void CreateNewPlayerState()
 	{
-		base.OnInitialized();
-
-		_player = Instantiate(_playerPrefab, transform);
-		_player.Init();
+		PlayerState = new PlayerState(_defaultDeckCards);
 	}
 }

@@ -6,7 +6,6 @@ public class Player : MapActor
 {
 	[SerializeField] private Hand _hand;
 	[SerializeField] private PlayerInput _input;
-	[SerializeField] private List<Card> _defaultDeckCards;
 	[SerializeField] private int _cardsToDrawEachTurn = 5;
 	[SerializeField] private int _coinsToAwardEachTurn = 3;
 
@@ -36,7 +35,7 @@ public class Player : MapActor
 		deckGo.transform.SetParent(transform);
 
 		_deck = deckGo.AddComponent<Deck>();
-		_deck.Init(this, _defaultDeckCards);
+		_deck.Init(this, PlayerManager.PlayerState.Deck);
 
 		_hand.Init(this);
 

@@ -54,9 +54,8 @@ namespace DungeonKeeperRogue.Gameplay
 			OnTurnEnd?.Invoke(_currentTeam);
 
 			_isRunningEndOfTurn = false;
-
-			Team winningTeam;
-			if (_scenario.IsComplete(out winningTeam))
+            
+			if (_scenario.IsComplete(out Team winningTeam))
 			{
 				_isRunning = false;
 				yield break;
@@ -73,8 +72,8 @@ namespace DungeonKeeperRogue.Gameplay
 
 		private IEnumerator RunStartTurn()
 		{
-			Debug.Log($"[TurnController]: starting turn {_currentTeam}");
-			
+			//Debug.Log($"[TurnController]: starting turn {_currentTeam}");
+            
 			OnTurnStart?.Invoke(_currentTeam);
 
 			yield return _scenario.GetMapActorForTeam(_currentTeam).OnTurnStart();
