@@ -31,6 +31,9 @@ public class Card : MonoBehaviour
 	public CardType CardType => _cardType;
 	public bool IsPlaying => _isPlaying;
 	public int Cost => _goldCost;
+	public string Name => _name;
+	public string Description => _description;
+	public Sprite Icon => _icon;
 
 
 	private void OnEnable()

@@ -11,18 +11,6 @@ public class HUDTileInfo : MonoSingleton<HUDTileInfo>
     protected override void OnInitialized()
     {
         Hide();
-        
-        // Subscribe to combat end
-    }
-
-    private void OnDestroy()
-    {
-        // Unsubscribe to combat end
-    }
-
-    private void OnCombatEnd()
-    {
-        Hide();
     }
 
     public void ShowTileInfo(string name, string description, Sprite icon)

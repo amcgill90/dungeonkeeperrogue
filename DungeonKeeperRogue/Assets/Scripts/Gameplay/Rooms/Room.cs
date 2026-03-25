@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Room : MapUnit
 {
+	[SerializeField] private Card _card;
+	
+	public Card Card => _card;
+	
 	private static readonly NodeSelectionFilterOptions nodeSelectOptions = new NodeSelectionFilterOptions()
 	{
 		controlled = SelectionFilter.True,

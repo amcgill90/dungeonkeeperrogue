@@ -34,6 +34,7 @@ public class MapNode : MonoBehaviour
 	public bool CanContainReward => _canContainReward;
 	public MapNodeReward Reward => _reward;
 	public bool HasRoom => _room != null || IsBase;
+	public Room Room => _room;
 
 
 	private void Awake()

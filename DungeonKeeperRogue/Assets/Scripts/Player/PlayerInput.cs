@@ -59,6 +59,30 @@ public class PlayerInput : MonoBehaviour
 		}
 
 		var mouse = UnityEngine.InputSystem.Mouse.current;
+		Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(mouse.position.value.x, mouse.position.value.y, -Camera.main.transform.position.z));
+		
+		MapNode nodeUnderMouse = null;
+
+		if (Physics2D.Raycast(worldPos, Vector2.zero, _uiContactFilter, _raycastHits) > 0)
+		{
+			RaycastHit2D hit = _raycastHits[0];
+			nodeUnderMouse = hit.collider.GetComponentInParent<MapNode>();
+
+			if (nodeUnderMouse&& nodeUnderMouse.HasRoom)
+			{
+				var card = nodeUnderMouse.Room.Card;
+				if (card)
+				{
+					HUDTileInfo.Instance.ShowTileInfo(card.Name, card.Description, card.Icon);
+				}
+			}
+			else
+			{
+				HUDTileInfo.Instance.Hide();
+			}
+		}
+
+		_lastHighlightedNode = nodeUnderMouse;
 
 		if (_cardBeingPlayed == null)
 		{
@@ -74,7 +98,6 @@ public class PlayerInput : MonoBehaviour
 			}
 
 			// find card under mouse and highlight
-			Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(mouse.position.value.x, mouse.position.value.y, -Camera.main.transform.position.z));
 			Card cardUnderMouse = null;
 
 			if (Physics2D.Raycast(worldPos, Vector2.zero, _uiContactFilter, _raycastHits) > 0)

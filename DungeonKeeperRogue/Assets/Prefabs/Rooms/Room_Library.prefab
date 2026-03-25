@@ -50,6 +50,7 @@ MonoBehaviour:
   _health: {fileID: 0}
   _spriteRenderer: {fileID: 8118238266824464665}
   _behaviour: {fileID: 3169895096396555582}
+  _card: {fileID: 4225025921467103237, guid: e4e82e6313e814961a798486b00e8f67, type: 3}
 --- !u!114 &3169895096396555582
 MonoBehaviour:
   m_ObjectHideFlags: 0
