@@ -5,7 +5,7 @@ using UnityEngine;
 public class MapNodeReward_Coins : MapNodeReward
 {
 	[SerializeField] private int _amount = 3;
-	[SerializeField] private float _destoyDelay = 1f;
+	[SerializeField] private float _destroyDelay = 1f;
 	[SerializeField] private FlyingText _flyingTextPrefab;
 	
 	public override void Trigger()
@@ -18,7 +18,7 @@ public class MapNodeReward_Coins : MapNodeReward
 
 	private IEnumerator DestroyRoutine()
 	{
-		yield return new WaitForSeconds(_destoyDelay);
+		yield return new WaitForSeconds(_destroyDelay);
 		Destroy(gameObject);
 	}
 }
