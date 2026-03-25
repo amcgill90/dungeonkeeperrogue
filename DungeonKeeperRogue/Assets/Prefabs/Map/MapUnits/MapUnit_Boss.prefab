@@ -56,6 +56,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6739408957773528959, guid: 486279ef563b5d14091639db0d4d2aed, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739408957773528959, guid: 486279ef563b5d14091639db0d4d2aed, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5102523302120158241, guid: fca45dfd54a2b9e42a92458466aeb74f, type: 3}
+    - target: {fileID: 7745961233799083864, guid: 486279ef563b5d14091639db0d4d2aed, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8432871799508101696, guid: 486279ef563b5d14091639db0d4d2aed, type: 3}
       propertyPath: m_Name
       value: MapUnit_Boss
