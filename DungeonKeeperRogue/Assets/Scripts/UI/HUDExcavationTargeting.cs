@@ -20,10 +20,10 @@ public class HUDExcavationTargeting : MonoSingleton<HUDExcavationTargeting>
         gameObject.SetActive(false);
     }
 
-    public void ShowExcavationUI(int totalExcavations, int excavationsRemaining)
+    public void ShowExcavationUI(int digIndex, int totalDigs)
     {
         gameObject.SetActive(true);
-        var excavationString = string.Format(_excavationCountFormat, totalExcavations, excavationsRemaining);
+        var excavationString = string.Format(_excavationCountFormat, digIndex, totalDigs);
         _excavationCountText.SetText(excavationString);
         
         HUDCombatInfo.Instance.HideEndTurnButton();

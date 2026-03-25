@@ -18,7 +18,7 @@ public class Spell_Dig : Spell
 
 	public override IEnumerator CastSpell()
 	{
-		HUDExcavationTargeting.Instance.ShowExcavationUI(_digsAllowed, DigsRemaining);
+		HUDExcavationTargeting.Instance.ShowExcavationUI(_digCount + 1, _digsAllowed);
 		HUDExcavationTargeting.OnSkip += DigSkipped;
 
 		// dig needs to receive more player input to determine location to dig
@@ -32,7 +32,7 @@ public class Spell_Dig : Spell
 				selectedNode.Diggable.Dig();
 				++_digCount;
 
-				HUDExcavationTargeting.Instance.ShowExcavationUI(_digsAllowed, DigsRemaining);
+				HUDExcavationTargeting.Instance.ShowExcavationUI(_digCount + 1, _digsAllowed);
 			}
 
 			yield return null;
