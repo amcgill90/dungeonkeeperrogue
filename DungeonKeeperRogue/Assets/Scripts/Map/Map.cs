@@ -33,6 +33,7 @@ public class Map : MonoSingleton<Map>
 		_currentConfig = config;
 
 		InstantiateNodes();
+		ShowNodeHighlights(null, null);
 	}
 
 	public void RemoveNodes()

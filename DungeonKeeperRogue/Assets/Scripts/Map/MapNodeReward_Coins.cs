@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using DungeonKeeperRogue.Gameplay;
 using UnityEngine;
 
 public class MapNodeReward_Coins : MapNodeReward
@@ -8,7 +9,7 @@ public class MapNodeReward_Coins : MapNodeReward
 	
 	public override void Trigger()
 	{
-		PlayerManager.Instance.Player.AddCoins(_amount);
+		Scenario.Instance.Player.AddCoins(_amount);
 		StartCoroutine(DestroyRoutine());
 	}
 

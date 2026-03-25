@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38a433d43f303423b993f825d780acdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  _handArea: {fileID: 153114398350999200}
   _hand: {fileID: 730265352102699499}
   _input: {fileID: 8133164194202661656}
   _defaultDeckCards:
@@ -203,6 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1061b7c1948b4162837ae430651303c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hand
+  _handArea: {fileID: 153114398350999200}
   _showCurve:
     serializedVersion: 2
     m_Curve:

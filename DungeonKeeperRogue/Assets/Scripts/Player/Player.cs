@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Player : MapActor
 {
-	[SerializeField] private BoxCollider2D _handArea;
 	[SerializeField] private Hand _hand;
 	[SerializeField] private PlayerInput _input;
 	[SerializeField] private List<Card> _defaultDeckCards;
@@ -27,6 +26,8 @@ public class Player : MapActor
 
 		_deck = deckGo.AddComponent<Deck>();
 		_deck.Init(this, _defaultDeckCards);
+
+		_hand.Init(this);
 
 		_input.Init(this);
 
@@ -69,16 +70,11 @@ public class Player : MapActor
 			return;
 		}
 
-		float cardInc = cards.Count > 1 ? _handArea.bounds.size.x / (cards.Count - 1) : 0f;
-		float cardOffset = _handArea.bounds.center.x - cardInc * (cards.Count / 2);
-
 		for (int i = 0; i < cards.Count; ++i)
 		{
 			Card card = cards[i];
 
-			card.gameObject.SetActive(true);
-			card.transform.SetParent(_handArea.transform);
-			card.transform.localPosition = new Vector3(cardOffset + cardInc * i, 0f, 0f);
+			_hand.AddCard(card);
 		}
 	}
 }
