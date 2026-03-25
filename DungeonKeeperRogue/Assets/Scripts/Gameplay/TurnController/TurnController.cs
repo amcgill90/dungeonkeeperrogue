@@ -7,6 +7,7 @@ namespace DungeonKeeperRogue.Gameplay
     {
         [SerializeField] private Team _firstTeam = Team.Player;
 
+        private bool _isRunning;
         private bool _isInitialised;
         private Team _currentTeam;
         private Scenario _scenario;
@@ -17,9 +18,10 @@ namespace DungeonKeeperRogue.Gameplay
         public delegate void TurnDelegate(Team team);
         public static event TurnDelegate OnTurnStart;
         public static event TurnDelegate OnTurnEnd;
-
+        
         public void Init(Scenario scenario)
         {
+            _isRunning = true;
             _scenario = scenario;
             _isInitialised = true;
         }
@@ -47,16 +49,28 @@ namespace DungeonKeeperRogue.Gameplay
 
         private void Update()
         {
-            if (_isInitialised && _currentAction == null && IsTurnComplete())
+            if (_isRunning && _isInitialised && _currentAction == null && IsTurnComplete())
             {
                 EndTurnAndStartNext();
             }
         }
         
+        public void Stop()
+        {
+            _isRunning = false;
+            
+            if (_currentAction != null) 
+            {
+                StopCoroutine(_currentAction);
+            }
+
+            _currentAction = null;
+        }
+        
         private void EndTurnAndStartNext()
         {
             OnTurnEnd?.Invoke(_currentTeam);
-            _currentTeam = _currentTeam == Team.Player ? Team.Enemy :  Team.Player;
+            _currentTeam = _currentTeam == Team.Player ? Team.Enemy : Team.Player;
             StartTurn();
         }
 

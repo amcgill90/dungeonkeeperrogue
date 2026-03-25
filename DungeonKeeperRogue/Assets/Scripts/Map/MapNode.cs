@@ -26,6 +26,7 @@ public class MapNode : MonoBehaviour
 
 
 	public Vector2Int Coordinates => _coordinates;
+	public Vector2 WorldPos => transform.position;
 	public GameObject InstancedObject => _instancedObject;
 	public Diggable Diggable => _diggable;
 	public bool IsBase => _isBase;

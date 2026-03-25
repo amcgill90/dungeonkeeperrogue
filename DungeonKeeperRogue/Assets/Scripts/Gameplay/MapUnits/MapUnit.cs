@@ -16,6 +16,7 @@ namespace DungeonKeeperRogue.Gameplay
 
         public Team Team => _team;
         public bool IsRunningBehaviour => _activeBehaviour != null;
+        public Vector2 Position => transform.position;
         
         public delegate void MapUnitEvent(MapUnit unit);
         public event MapUnitEvent OnDestroyed;

@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bbfc1b1c9b24808a431cccd68bde510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DungeonKeeperRogue.Scenario
+  _playerBaseNodeTag: {fileID: 11400000, guid: 27b556521ae5c7640be5d317a5f687cb, type: 2}
   _playerPrefab: {fileID: 1457410412052221941, guid: 7b50ab7a03946422697f64da9a4ee217, type: 3}
   _enemyPrefab: {fileID: 1385316279389416183, guid: 8302fb5b79911da42b46ca383a506eee, type: 3}
   _map: {fileID: 1968721153}

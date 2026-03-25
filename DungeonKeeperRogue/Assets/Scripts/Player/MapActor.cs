@@ -44,10 +44,7 @@ public class MapActor : MonoBehaviour
         _units.ForEach(u => u.RunBehavior());
     }
 
-    protected virtual void OnTurnStartInternal()
-    {
-        
-    }
+    protected virtual void OnTurnStartInternal() { }
 
     private bool IsTurnCompleteInternal()
     {
