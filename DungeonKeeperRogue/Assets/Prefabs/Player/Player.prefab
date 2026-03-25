@@ -78,6 +78,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
   _handShowThreshold: 0.15
   _handHideThreshold: 0.5
+  _inputLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1 &2636179331914616703
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,7 +123,7 @@ GameObject:
   - component: {fileID: 6809238923475655473}
   - component: {fileID: 153114398350999200}
   - component: {fileID: 730265352102699499}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}

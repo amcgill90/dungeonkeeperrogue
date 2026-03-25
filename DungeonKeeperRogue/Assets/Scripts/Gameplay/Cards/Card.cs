@@ -4,31 +4,44 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
 	[SerializeField] private CardType _cardType;
+	[SerializeField] private GameObject _highlight;
 	[SerializeField] private GameObject _prefabToSpawn;
 
 	private bool _isPlaying = false;
+	private Player _owner;
 
 	public CardType CardType => _cardType;
 	public bool IsPlaying => _isPlaying;
 
 
-	public IEnumerator PlayCard(MapNode toNode)
+	private void OnEnable()
 	{
-		if (toNode == null)
-		{
-			yield break;
-		}
+		SetHighlighted(false);
+	}
 
-		GameObject go = Instantiate(_prefabToSpawn, toNode.transform);
+	public void Init(Player owner)
+	{
+		_owner = owner;
+	}
+
+	public IEnumerator PlayCard()
+	{
+		GameObject go = Instantiate(_prefabToSpawn, transform.position, Quaternion.identity);
 		Spell spell = go.GetComponentInChildren<Spell>();
 
 		_isPlaying = true;
 
 		if (spell != null)
 		{
-			yield return spell.CastSpell(toNode);
+			spell.Init(_owner);
+			yield return spell.CastSpell();
 		}
 
 		_isPlaying = false;
+	}
+
+	public void SetHighlighted(bool highlight)
+	{
+		_highlight.SetActive(highlight);
 	}
 }

@@ -1,17 +1,68 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
 	[SerializeField] private float _handShowThreshold = 0.1f;
 	[SerializeField] private float _handHideThreshold = 0.5f;
+	[SerializeField] private LayerMask _inputLayerMask;
 
 	private Player _player;
+	private Card _lastHighlightedCard;
+	private MapNode _lastHighlightedNode;
 	private RaycastHit2D[] _raycastHits = new RaycastHit2D[2];
+	private ContactFilter2D _uiContactFilter;
+	private Card _cardBeingPlayed = null;
 
 
 	public void Init(Player player)
 	{
 		_player = player;
+
+		_uiContactFilter = new ContactFilter2D()
+		{
+			layerMask = _inputLayerMask,
+			useTriggers = true
+		};
+	}
+
+	public MapNode DoMapNodeSelection(NodeSelectionFilterOptions filter)
+	{
+		var mouse = UnityEngine.InputSystem.Mouse.current;
+		Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(mouse.position.value.x, mouse.position.value.y, -Camera.main.transform.position.z));
+		MapNode nodeUnderMouse = null;
+
+		// set which nodes are options given current filter
+		Map.Instance.ShowNodeOptions(filter);
+
+		if (Physics2D.Raycast(worldPos, Vector2.zero, _uiContactFilter, _raycastHits) > 0)
+		{
+			RaycastHit2D hit = _raycastHits[0];
+			nodeUnderMouse = hit.collider.GetComponentInParent<MapNode>();
+
+			if (nodeUnderMouse != null)
+			{
+				// determine if this node is valid
+				if (filter.diggable != SelectionFilter.False && nodeUnderMouse.Diggable == null)
+				{
+					nodeUnderMouse = null;
+				}
+			}
+
+			if (nodeUnderMouse != null)
+			{
+				nodeUnderMouse.SetHighlighted(true);
+			}
+		}
+
+		if (_lastHighlightedNode != null && _lastHighlightedNode != nodeUnderMouse)
+		{
+			_lastHighlightedNode.SetHighlighted(false);
+		}
+
+		_lastHighlightedNode = nodeUnderMouse;
+
+		return mouse.leftButton.wasPressedThisFrame ? nodeUnderMouse : null;
 	}
 
 	private void Update()
@@ -23,28 +74,59 @@ public class PlayerInput : MonoBehaviour
 
 		var mouse = UnityEngine.InputSystem.Mouse.current;
 
-		// handle hand showing
-		float normalizedScreenY = mouse.position.value.y / Screen.height;
-		if (normalizedScreenY <= _handShowThreshold)
+		if (_cardBeingPlayed == null)
 		{
-			_player.Hand.Show(true);
+			// handle hand showing
+			float normalizedScreenY = mouse.position.value.y / Screen.height;
+			if (normalizedScreenY <= _handShowThreshold)
+			{
+				_player.Hand.Show(true);
+			}
+			else if (normalizedScreenY > _handHideThreshold)
+			{
+				_player.Hand.Show(false);
+			}
+
+			// find card under mouse and highlight
+			Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(mouse.position.value.x, mouse.position.value.y, -Camera.main.transform.position.z));
+			Card cardUnderMouse = null;
+
+			if (Physics2D.Raycast(worldPos, Vector2.zero, _uiContactFilter, _raycastHits) > 0)
+			{
+				RaycastHit2D hit = _raycastHits[0];
+				cardUnderMouse = hit.collider.GetComponentInParent<Card>();
+				if (cardUnderMouse != null)
+				{
+					cardUnderMouse.SetHighlighted(true);
+				}
+			}
+
+			if (_lastHighlightedCard != null && _lastHighlightedCard != cardUnderMouse)
+			{
+				_lastHighlightedCard.SetHighlighted(false);
+			}
+
+			_lastHighlightedCard = cardUnderMouse;
+
+			// handle click of card
+			if (cardUnderMouse != null && mouse.leftButton.wasPressedThisFrame)
+			{
+				StartCoroutine(PlayCard(cardUnderMouse));
+			}
 		}
-		else if (normalizedScreenY > _handHideThreshold)
+		else
 		{
+			// card is being played - hide hand
 			_player.Hand.Show(false);
 		}
+	}
 
-		// Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(mouse.position.value.x, mouse.position.value.y, -Camera.main.transform.position.z));
+	private IEnumerator PlayCard(Card card)
+	{
+		_cardBeingPlayed = card;
 
-		// if (Physics2D.Raycast(worldPos, Vector2.zero, ContactFilter2D.noFilter, _raycastHits) > 0)
-		// {
-		// 	RaycastHit2D hit = _raycastHits[0];
-		// 	Hand hand = hit.collider.GetComponentInParent<Hand>();
-		// 	if (hand != null)
-		// 	{
-		// 		// make sure hand is in "visible" state
-		// 		hand.Show(true);
-		// 	}
-		// }
+		yield return card.PlayCard();
+
+		_cardBeingPlayed = null;
 	}
 }

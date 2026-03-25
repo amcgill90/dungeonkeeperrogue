@@ -12,9 +12,6 @@ public class Map : MonoSingleton<Map>
 
 	private MapConfig _currentConfig;
 	private MapNode[,] _mapNodes;
-	private RaycastHit2D[] _raycastHits = new RaycastHit2D[2];
-	private MapNode _lastNodeUnderMouse = null;
-	private bool _isRunningNodeBehaviour = false;
 
 
 	private void OnEnable()
@@ -22,38 +19,6 @@ public class Map : MonoSingleton<Map>
 		if (_defaultConfig != null && _currentConfig == null)
 		{
 			Init(_defaultConfig);
-		}
-	}
-
-	private void Update()
-	{
-		if (_isRunningNodeBehaviour == false)
-		{
-			var mouse = UnityEngine.InputSystem.Mouse.current;
-			Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(mouse.position.value.x, mouse.position.value.y, 0f));
-			MapNode nodeUnderMouse = null;
-
-			if (Physics2D.Raycast(worldPos, Vector2.zero, ContactFilter2D.noFilter, _raycastHits) > 0)
-			{
-				nodeUnderMouse = _raycastHits[0].collider.GetComponentInParent<MapNode>();
-
-				if (nodeUnderMouse != null)
-				{
-					nodeUnderMouse.SetHighlighted(true);
-				}
-			}
-
-			if (nodeUnderMouse != _lastNodeUnderMouse && _lastNodeUnderMouse != null)
-			{
-				_lastNodeUnderMouse.SetHighlighted(false);
-			}
-
-			if (nodeUnderMouse != null && mouse.leftButton.wasPressedThisFrame)
-			{
-				
-			}
-
-			_lastNodeUnderMouse = nodeUnderMouse;
 		}
 	}
 
@@ -109,6 +74,18 @@ public class Map : MonoSingleton<Map>
 
 				_mapNodes[x, y] = newNode;
 			}
+		}
+	}
+
+	public void ShowNodeOptions(NodeSelectionFilterOptions options)
+	{
+		foreach (MapNode node in _mapNodes)
+		{
+			bool isOption = options.IsDiggableSatisfied(node)
+				&& options.IsControlledSatisfied(node)
+				&& options.IsAdjacentToControlledSatisfied(node);
+
+			node.SetOption(isOption);
 		}
 	}
 }

@@ -12,7 +12,7 @@ public class Deck : MonoBehaviour
 	public int TotalCards => _cards.Count + _discardPile.Count;
 
 
-	public void Init(List<Card> cardPrefabs)
+	public void Init(Player owner, List<Card> cardPrefabs)
 	{
 		Clear();
 
@@ -20,6 +20,7 @@ public class Deck : MonoBehaviour
 		{
 			Card card = Instantiate(prefab, transform);
 			card.gameObject.SetActive(false);
+			card.Init(owner);
 
 			_cards.Add(card);
 		}

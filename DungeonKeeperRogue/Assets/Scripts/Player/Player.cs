@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
 
 	public Deck Deck => _deck;
 	public Hand Hand => _hand;
+	public PlayerInput Input => _input;
 	public int Coins => _coins;
 
 
@@ -24,7 +25,7 @@ public class Player : MonoBehaviour
 		deckGo.transform.SetParent(transform);
 
 		_deck = deckGo.AddComponent<Deck>();
-		_deck.Init(_defaultDeckCards);
+		_deck.Init(this, _defaultDeckCards);
 
 		_input.Init(this);
 

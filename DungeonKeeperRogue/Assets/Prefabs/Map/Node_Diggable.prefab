@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.4339623
       objectReference: {fileID: 0}
+    - target: {fileID: 5049524645392234478, guid: a36790e1a1630401d9564c5b732b7f28, type: 3}
+      propertyPath: _prefabToInstantiate
+      value: 
+      objectReference: {fileID: 6658710514242329104, guid: faed807bf4ab14ec1bdbdb23393f69cd, type: 3}
     - target: {fileID: 9189691260241261510, guid: a36790e1a1630401d9564c5b732b7f28, type: 3}
       propertyPath: m_Name
       value: Node_Diggable

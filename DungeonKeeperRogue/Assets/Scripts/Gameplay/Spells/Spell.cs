@@ -3,14 +3,17 @@ using UnityEngine;
 
 public class Spell : MonoBehaviour
 {
-	public IEnumerator CastSpell(MapNode fromNode)
+	protected Player _owner;
+
+
+	public void Init(Player owner)
 	{
-		yield return CastSpellInternal(fromNode);
+		_owner = owner;
 	}
 
-	protected virtual IEnumerator CastSpellInternal(MapNode fromNode)
+	public virtual IEnumerator CastSpell()
 	{
-		// override this function to implement specific spell behaviour / visuals
+		// override this function to implement specific spell behaviour
 		yield return null;
 	}
 }
