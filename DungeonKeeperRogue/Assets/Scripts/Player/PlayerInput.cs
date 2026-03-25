@@ -68,7 +68,7 @@ public class PlayerInput : MonoBehaviour
 			RaycastHit2D hit = _raycastHits[0];
 			nodeUnderMouse = hit.collider.GetComponentInParent<MapNode>();
 
-			if (nodeUnderMouse&& nodeUnderMouse.HasRoom)
+			if (nodeUnderMouse&& nodeUnderMouse.HasRoom && nodeUnderMouse.Room.Card)
 			{
 				var card = nodeUnderMouse.Room.Card;
 				if (card)
