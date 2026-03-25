@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15815793257b4b50b2e2b9d9c8837b21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MapNodeReward_Coins
+  _rewardHintSprite: {fileID: 21300000, guid: 59125a464a7214841bdd81b33b547098, type: 3}
   _amount: 1
   _destoyDelay: 1
   _flyingTextPrefab: {fileID: 563122732018579175, guid: ee8c1df59068486439322db0f9963d12, type: 3}
