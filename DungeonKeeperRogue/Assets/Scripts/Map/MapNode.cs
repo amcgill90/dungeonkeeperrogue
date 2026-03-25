@@ -21,12 +21,14 @@ public class MapNode : MonoBehaviour
 	private GameObject _instancedObject;
 	private Diggable _diggable;
 	private Color _defaultHighlightColour;
+	private Room _room;
 
 
 	public Vector2Int Coordinates => _coordinates;
 	public GameObject InstancedObject => _instancedObject;
 	public Diggable Diggable => _diggable;
 	public bool IsBase => _isBase;
+	public bool HasRoom => _room != null || IsBase;
 
 
 	private void Awake()
@@ -70,6 +72,13 @@ public class MapNode : MonoBehaviour
 	public void ShowControlled(bool show)
 	{
 		_isControlledHighlight.SetActive(show);
+	}
+
+	public void AddRoom(Room room)
+	{
+		_room = room;
+		room.transform.SetParent(transform, false);
+		room.transform.localPosition = new Vector3(0f, 0f, -1f);
 	}
 
 	private void OnDig(Diggable diggable)

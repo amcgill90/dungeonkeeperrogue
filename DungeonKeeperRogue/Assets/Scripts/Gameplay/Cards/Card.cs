@@ -47,6 +47,7 @@ public class Card : MonoBehaviour
 	{
 		GameObject go = Instantiate(_prefabToSpawn, transform.position, Quaternion.identity);
 		Spell spell = go.GetComponentInChildren<Spell>();
+		Room room = go.GetComponentInChildren<Room>();
 
 		_isPlaying = true;
 
@@ -54,6 +55,12 @@ public class Card : MonoBehaviour
 		{
 			spell.Init(_owner);
 			yield return spell.CastSpell();
+		}
+
+		if (room != null)
+		{
+			room.Init(_owner);
+			yield return room.PlaceRoom();
 		}
 
 		_isPlaying = false;

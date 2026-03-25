@@ -85,10 +85,7 @@ public class Map : MonoSingleton<Map>
 		foreach (MapNode node in _mapNodes)
 		{
 			bool isControlled = IsNodeControlledByPlayer(node);
-			bool isOption = options != null
-				&& options.IsDiggableSatisfied(node)
-				&& options.IsControlledSatisfied(node)
-				&& options.IsAdjacentToControlledSatisfied(node);
+			bool isOption = options != null && options.IsValidOption(node);
 
 			node.ShowControlled(isControlled);
 			node.SetHighlighted(isOption ? (hovered == node ? MapNode.HighlightState.Hovered : MapNode.HighlightState.Option) : MapNode.HighlightState.None);

@@ -5,6 +5,7 @@ public class NodeSelectionFilterOptions
 	public SelectionFilter diggable = SelectionFilter.Any;
 	public SelectionFilter controlled = SelectionFilter.Any;
 	public SelectionFilter adjacentToControlled = SelectionFilter.Any;
+	public SelectionFilter hasRoom = SelectionFilter.Any;
 
 
 	public bool IsDiggableSatisfied(MapNode node)
@@ -67,8 +68,28 @@ public class NodeSelectionFilterOptions
 		return false;
 	}
 
+	public bool IsHasRoomSatisfied(MapNode node)
+	{
+		switch (hasRoom)
+		{
+			case SelectionFilter.True:
+				return node.HasRoom;
+
+			case SelectionFilter.False:
+				return node.HasRoom == false;
+
+			case SelectionFilter.Any:
+				return true;
+		}
+
+		return false;
+	}
+
 	public bool IsValidOption(MapNode node)
 	{
-		return IsDiggableSatisfied(node) && IsControlledSatisfied(node) && IsAdjacentToControlledSatisfied(node);
+		return IsHasRoomSatisfied(node)
+			&& IsDiggableSatisfied(node)
+			&& IsControlledSatisfied(node)
+			&& IsAdjacentToControlledSatisfied(node);
 	}
 }
