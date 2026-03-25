@@ -6,6 +6,8 @@ public class Spell_DamageRandom : Spell
 {
 	[SerializeField] private Team _targetTeam;
 	[SerializeField] private int _damageToDeal = 3;
+	[SerializeField] private int _damageInstances = 1;
+	[SerializeField] private float _timeBetweenDamageInstances;
 	[SerializeField] private GameObject _fxObject;
 	[SerializeField] private Vector2 _spawnPositionDelta;
 	[SerializeField] private float _damageDelay;
@@ -24,16 +26,23 @@ public class Spell_DamageRandom : Spell
 			yield break;
 		}
 
-		Vector2 spawnPos = (Vector2) unit.transform.position + _spawnPositionDelta;
-		Instantiate(_fxObject, spawnPos, Quaternion.identity);
+		var damageInstancesApplied = 0;
 		
-		yield return new WaitForSeconds(_damageDelay);
+		while (damageInstancesApplied < _damageInstances)
+		{
+			Vector2 spawnPos = (Vector2) unit.transform.position + _spawnPositionDelta;
+			Instantiate(_fxObject, spawnPos, Quaternion.identity);
 		
-		DamageDetails damageDetails = new(_damageToDeal);
-		unit.Health.TryDamage(damageDetails);
-
-		yield return null;
-
+			yield return new WaitForSeconds(_damageDelay);
+		
+			DamageDetails damageDetails = new(_damageToDeal);
+			unit.Health.TryDamage(damageDetails);
+			
+			yield return new WaitForSeconds(_timeBetweenDamageInstances);
+			
+			++damageInstancesApplied;
+		}
+		
 		Destroy(gameObject);
 	}
 }
