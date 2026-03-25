@@ -39,6 +39,11 @@ public class Player : MonoBehaviour
 		DrawCardsToHand();
 	}
 
+	public void AddCoins(int amount)
+	{
+		_coins += amount;
+	}
+
 	private void DrawCardsToHand()
 	{
 		List<Card> cards = _deck.DrawCards(_cardsToDrawEachTurn);

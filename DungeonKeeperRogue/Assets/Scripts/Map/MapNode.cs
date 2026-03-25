@@ -81,5 +81,18 @@ public class MapNode : MonoBehaviour
 
 		_diggable = null;
 		_instancedObject = null;
+		
+		ApplyReward();
+	}
+
+	private void ApplyReward()
+	{
+		var mapConfig = Map.Instance.CurrentConfig;
+		if (mapConfig == false || mapConfig.RewardsConfig == false) return;
+
+		if (mapConfig.RewardsConfig.TryGetRandomNodeReward(out MapNodeReward reward))
+		{
+			reward.Trigger();
+		}
 	}
 }

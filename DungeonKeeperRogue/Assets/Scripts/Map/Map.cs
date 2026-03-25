@@ -14,7 +14,8 @@ public class Map : MonoSingleton<Map>
 	private MapNode[,] _mapNodes;
 
 	private static List<MapNode> _checkedNodesCache = new();
-
+	
+	public MapConfig CurrentConfig => _currentConfig;
 
 	private void OnEnable()
 	{

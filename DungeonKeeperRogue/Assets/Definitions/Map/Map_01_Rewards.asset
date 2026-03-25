@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cefd36e2a040462ca5e9581b13d9ff0f, type: 3}
+  m_Name: Map_01_Rewards
+  m_EditorClassIdentifier: Assembly-CSharp::MapNodeRewardsConfig
+  Rewards:
+  - {fileID: 1042616778281392755, guid: a3a2ee0ab3893984eb476f1e026f6e91, type: 3}
+  RewardChance: 0.5

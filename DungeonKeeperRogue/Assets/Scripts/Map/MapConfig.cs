@@ -7,9 +7,11 @@ public class MapConfig : ScriptableObject
     [SerializeField] private Vector2Int _resolution = new Vector2Int(5, 5);
 	[SerializeField][HideInInspector] private MapNode[] _nodes;
 
+	[SerializeField] private MapNodeRewardsConfig _rewardsConfig;
+	public MapNodeRewardsConfig RewardsConfig => _rewardsConfig;
+	
 	public Vector2Int Resolution => _resolution;
 	public MapNode[] Nodes => _nodes;
-
 
 	public MapNode GetNode(int x, int y)
 	{
