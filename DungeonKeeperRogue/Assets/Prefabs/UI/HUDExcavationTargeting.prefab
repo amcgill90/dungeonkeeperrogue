@@ -325,7 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HUDExcavationTargeting
   _excavationCountText: {fileID: 8093585110767362859}
-  _excavationCountFormat: 'Dig: {0}/{1}'
+  _excavationCountFormat: 'Mine: {0}/{1}'
 --- !u!1 &5113235967207349320
 GameObject:
   m_ObjectHideFlags: 0

@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1597751913541969889, guid: dff1b823ee7b44474abd63111a60ad4d, type: 3}
       propertyPath: m_Name
-      value: Card_Dig
+      value: Card_MiningTeam
       objectReference: {fileID: 0}
     - target: {fileID: 3799053136129701765, guid: dff1b823ee7b44474abd63111a60ad4d, type: 3}
       propertyPath: m_text
@@ -59,10 +59,10 @@ PrefabInstance:
     - target: {fileID: 8383202824859676916, guid: dff1b823ee7b44474abd63111a60ad4d, type: 3}
       propertyPath: _icon
       value: 
-      objectReference: {fileID: 21300000, guid: 535651fc8aaf0744d903f7d0b052a473, type: 3}
+      objectReference: {fileID: 21300000, guid: 4464c42b992dddf4aae07837451baa96, type: 3}
     - target: {fileID: 8383202824859676916, guid: dff1b823ee7b44474abd63111a60ad4d, type: 3}
       propertyPath: _name
-      value: Dig!
+      value: Mining Team
       objectReference: {fileID: 0}
     - target: {fileID: 8383202824859676916, guid: dff1b823ee7b44474abd63111a60ad4d, type: 3}
       propertyPath: _goldCost
@@ -70,12 +70,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8383202824859676916, guid: dff1b823ee7b44474abd63111a60ad4d, type: 3}
       propertyPath: _description
-      value: Mine 2
+      value: Mine 4
       objectReference: {fileID: 0}
     - target: {fileID: 8383202824859676916, guid: dff1b823ee7b44474abd63111a60ad4d, type: 3}
       propertyPath: _prefabToSpawn
       value: 
-      objectReference: {fileID: 3628572930411390037, guid: 79628927066cf41af8ba700efe2e3e91, type: 3}
+      objectReference: {fileID: 3628572930411390037, guid: 73fb70abd0a325d4aaf0a2db6585ac71, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

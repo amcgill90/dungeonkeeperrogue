@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2961769080467171381, guid: 9a2e2e9ea528143049e4309fa521dba2, type: 3}
       propertyPath: _goldCost
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2961769080467171381, guid: 9a2e2e9ea528143049e4309fa521dba2, type: 3}
       propertyPath: _description
