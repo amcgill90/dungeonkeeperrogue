@@ -99,8 +99,10 @@ public class MapNode : MonoBehaviour
 		var mapConfig = Map.Instance.CurrentConfig;
 		if (mapConfig == false || mapConfig.RewardsConfig == false) return;
 
-		if (mapConfig.RewardsConfig.TryGetRandomNodeReward(out MapNodeReward reward))
+		if (mapConfig.RewardsConfig.TryGetRandomNodeReward(out MapNodeReward randomReward))
 		{
+			var reward = Instantiate(randomReward, transform);
+			reward.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
 			reward.Trigger();
 		}
 	}
