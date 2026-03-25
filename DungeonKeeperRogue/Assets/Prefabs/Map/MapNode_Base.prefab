@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 2071acad529034273aba0cac6a3c8adc, type: 3}
-  m_Color: {r: 0.34825563, g: 0.8113208, b: 0.567382, a: 1}
+  m_Color: {r: 0.18743324, g: 0.49056602, b: 0.33129287, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -432,6 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d73cba29f5e6e439f923af66557dfb8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MapNode
+  _isBase: 0
   _prefabToInstantiate: {fileID: 0}
   _highlight: {fileID: 7049932176752223248}
   _option: {fileID: 1638523889949802242}

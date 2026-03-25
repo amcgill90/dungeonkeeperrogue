@@ -24,10 +24,13 @@ public class Spell_Dig : Spell
 			{
 				// player just selected this node, so dig here
 				selectedNode.Diggable.Dig();
+				selectedNode.SetHighlighted(false);
 				++_digCount;
 			}
 
 			yield return null;
 		}
+
+		Map.Instance.ShowNodeOptions(null);
 	}
 }

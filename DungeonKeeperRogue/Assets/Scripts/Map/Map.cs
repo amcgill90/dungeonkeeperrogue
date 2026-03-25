@@ -13,6 +13,8 @@ public class Map : MonoSingleton<Map>
 	private MapConfig _currentConfig;
 	private MapNode[,] _mapNodes;
 
+	private static List<MapNode> _checkedNodesCache = new();
+
 
 	private void OnEnable()
 	{
@@ -81,7 +83,8 @@ public class Map : MonoSingleton<Map>
 	{
 		foreach (MapNode node in _mapNodes)
 		{
-			bool isOption = options.IsDiggableSatisfied(node)
+			bool isOption = options != null
+				&& options.IsDiggableSatisfied(node)
 				&& options.IsControlledSatisfied(node)
 				&& options.IsAdjacentToControlledSatisfied(node);
 
@@ -94,7 +97,8 @@ public class Map : MonoSingleton<Map>
 		// node is controlled by the player if there is a dug out path from it, back to the player base node
 		if (checkedNodes == null)
 		{
-			checkedNodes = new();
+			checkedNodes = _checkedNodesCache;
+			checkedNodes.Clear();
 		}
 
 		if (checkedNodes.Contains(node))
@@ -124,12 +128,8 @@ public class Map : MonoSingleton<Map>
 	{
 		if (checkedNodes == null)
 		{
-			checkedNodes = new();
-		}
-
-		if (checkedNodes.Contains(node))
-		{
-			return false;
+			checkedNodes = _checkedNodesCache;
+			checkedNodes.Clear();
 		}
 
 		// left
