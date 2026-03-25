@@ -15,6 +15,7 @@ namespace DungeonKeeperRogue.Gameplay
         private MapNode _currentMapNode;
 
         public Team Team => _team;
+		public Health Health => _health;
         public bool IsRunningBehaviour => _activeBehaviour != null;
         public Vector2 Position => transform.position;
         

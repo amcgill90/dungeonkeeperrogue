@@ -15,22 +15,13 @@ public class HUDCombatInfo : MonoSingleton<HUDCombatInfo>
     protected override void OnInitialized()
     {
         Player.OnCoinsChanged += OnCoinsChanged;
+		MapActor.OnHealthChanged += OnHealthChanged;
     }
 
     private void OnDestroy()
     {
         Player.OnCoinsChanged -= OnCoinsChanged;
-    }
-
-    private void OnCombatStart()
-    {
-        // _bossHealthBar.Init(maxHealth, currentHealth);
-        OnBossHealthChange();
-    }
-
-    private void OnPlayerTurnStart()
-    {
-        ShowEndTurnButton();
+		MapActor.OnHealthChanged -= OnHealthChanged;
     }
 
     private void OnCoinsChanged(int change, int newAmount)
@@ -38,11 +29,17 @@ public class HUDCombatInfo : MonoSingleton<HUDCombatInfo>
         _currentGoldText.text = newAmount.ToString();
     }
 
-    private void OnBossHealthChange()
+    private void OnHealthChanged(Team team, int currentHp, int maxHp)
     {
-        var bossHealthString = "20/30";
+        var bossHealthString = string.Format(_bossHealthStringFormat, currentHp, maxHp);
         _bossHealthText.SetText(bossHealthString);
-        // _bossHealthBar.UpdateProgress(currentHealth);
+
+		if (_bossHealthBar.MaxValue != maxHp)
+		{
+			_bossHealthBar.Init(maxHp, currentHp);
+		}
+
+        _bossHealthBar.UpdateProgress(currentHp);
     }
 
     public void EndTurnButtonPressed()

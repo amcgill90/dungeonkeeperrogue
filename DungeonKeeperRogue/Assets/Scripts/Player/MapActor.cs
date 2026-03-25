@@ -15,6 +15,9 @@ public class MapActor : MonoBehaviour
     public int UnitCount => _units.Count;
     public bool IsTurnComplete => IsTurnCompleteInternal();
 
+	public delegate void HealthChangedDelegate(Team team, int newValue, int max);
+	public static event HealthChangedDelegate OnHealthChanged;
+
 
     private void OnDestroy()
     {
@@ -25,7 +28,9 @@ public class MapActor : MonoBehaviour
     {
     }
 
-    public virtual void Init() { }
+    public virtual void Init()
+	{
+	}
 	
     public IEnumerator OnTurnStart()
     {
@@ -73,6 +78,12 @@ public class MapActor : MonoBehaviour
     {
         _units.Add(unit);
         unit.OnDestroyed += DeregisterUnit;
+
+		if (unit.Health != null)
+		{
+			unit.Health.OnHealthChanged += OnUnitHealthChanged;
+			OnUnitHealthChanged(); // call immediately to notify listeners
+		}
     }
 	
     private void DeregisterUnit(MapUnit unit)
@@ -81,6 +92,29 @@ public class MapActor : MonoBehaviour
         if (_units.Contains(unit))
         {
             _units.Remove(unit);
+
+			if (unit.Health != null)
+			{
+				unit.Health.OnHealthChanged -= OnUnitHealthChanged;
+			}
         }
     }
+
+	private void OnUnitHealthChanged()
+	{
+		int currentHpTotal = 0;
+		int maxHpTotal = 0;
+		foreach (MapUnit unit in _units)
+		{
+			if (unit.Health == null)
+			{
+				continue;
+			}
+
+			currentHpTotal += unit.Health.CurrentHealth;
+			maxHpTotal += unit.Health.MaxHealth;
+		}
+
+		OnHealthChanged?.Invoke(_team, currentHpTotal, maxHpTotal);
+	}
 }
