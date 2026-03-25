@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb69e7caa972a45d8b5ccd9d15fa909e, type: 3}
   m_Name: Map_01
   m_EditorClassIdentifier: Assembly-CSharp::MapConfig
-  _resolution: {x: 5, y: 5}
+  _resolution: {x: 6, y: 5}
   _nodes:
+  - {fileID: 2240441717556769797, guid: 812453d4bbc864643ae8b74ec794cde6, type: 3}
+  - {fileID: 2240441717556769797, guid: 812453d4bbc864643ae8b74ec794cde6, type: 3}
   - {fileID: 2240441717556769797, guid: 812453d4bbc864643ae8b74ec794cde6, type: 3}
   - {fileID: 2240441717556769797, guid: 812453d4bbc864643ae8b74ec794cde6, type: 3}
   - {fileID: 2240441717556769797, guid: 812453d4bbc864643ae8b74ec794cde6, type: 3}
@@ -28,7 +30,10 @@ MonoBehaviour:
   - {fileID: 2240441717556769797, guid: 812453d4bbc864643ae8b74ec794cde6, type: 3}
   - {fileID: 2240441717556769797, guid: 812453d4bbc864643ae8b74ec794cde6, type: 3}
   - {fileID: 2240441717556769797, guid: 812453d4bbc864643ae8b74ec794cde6, type: 3}
+  - {fileID: 2240441717556769797, guid: 812453d4bbc864643ae8b74ec794cde6, type: 3}
   - {fileID: 8139542213605647593, guid: a430f4e1fd5284c4a9c4d6b3a3eaead4, type: 3}
+  - {fileID: 2240441717556769797, guid: 812453d4bbc864643ae8b74ec794cde6, type: 3}
+  - {fileID: 2240441717556769797, guid: 812453d4bbc864643ae8b74ec794cde6, type: 3}
   - {fileID: 2240441717556769797, guid: 812453d4bbc864643ae8b74ec794cde6, type: 3}
   - {fileID: 2240441717556769797, guid: 812453d4bbc864643ae8b74ec794cde6, type: 3}
   - {fileID: 2240441717556769797, guid: 812453d4bbc864643ae8b74ec794cde6, type: 3}
