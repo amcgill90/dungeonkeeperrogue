@@ -8,7 +8,7 @@ public class MapNodeReward_Coins : MapNodeReward
 	[SerializeField] private float _destroyDelay = 1f;
 	[SerializeField] private FlyingText _flyingTextPrefab;
 	
-	public override void Trigger()
+	public override void Trigger(MapNode fromNode)
 	{
 		Scenario.Instance.Player.AddCoins(_amount);
 		var flyingText = Instantiate(_flyingTextPrefab, transform.position, Quaternion.identity);

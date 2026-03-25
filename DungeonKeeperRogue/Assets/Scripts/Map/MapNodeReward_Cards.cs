@@ -9,7 +9,7 @@ public class MapNodeReward_Cards : MapNodeReward
     [SerializeField] private float _destroyDelay = 1f;
     [SerializeField] private FlyingText _flyingTextPrefab;
 	
-    public override void Trigger()
+    public override void Trigger(MapNode fromNode)
     {
         Scenario.Instance.Player.DrawCardsToHand(_amount);
         var flyingText = Instantiate(_flyingTextPrefab, transform.position, Quaternion.identity);

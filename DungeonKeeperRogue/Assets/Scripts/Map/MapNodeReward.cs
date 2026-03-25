@@ -6,5 +6,5 @@ public abstract class MapNodeReward : MonoBehaviour
 	
 	public Sprite RewardHintSprite => _rewardHintSprite;
 	
-	public abstract void Trigger();
+	public abstract void Trigger(MapNode fromNode);
 }

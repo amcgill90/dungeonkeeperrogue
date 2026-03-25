@@ -122,7 +122,7 @@ public class MapNode : MonoBehaviour
 		{
 			var reward = Instantiate(prefab, transform);
 			reward.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-			reward.Trigger();
+			reward.Trigger(this);
 		}
 	}
 
