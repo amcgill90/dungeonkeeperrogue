@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 2071acad529034273aba0cac6a3c8adc, type: 3}
-  m_Color: {r: 0.15686275, g: 0.44313726, b: 0.29411766, a: 1}
+  m_Color: {r: 0.34015664, g: 0.7924528, b: 0.40019596, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -298,7 +298,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 9338a2cdeb4735f478ff2a4d5276337a, type: 3}
-  m_Color: {r: 0.9607843, g: 0.8039216, b: 0.3137255, a: 1}
+  m_Color: {r: 0.46431112, g: 0.8867924, b: 0.5211836, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -435,7 +435,7 @@ MonoBehaviour:
   _isBase: 0
   _prefabToInstantiate: {fileID: 0}
   _highlight: {fileID: 7403403747563920792}
-  _highlightOptionColour: {r: 0.5849056, g: 0.487923, b: 0.18485224, a: 1}
+  _highlightOptionColour: {r: 0.21800464, g: 0.6509434, b: 0.27628487, a: 1}
   _isControlledHighlight: {fileID: 1638523889949802242}
 --- !u!50 &5564693149545958086
 Rigidbody2D:
