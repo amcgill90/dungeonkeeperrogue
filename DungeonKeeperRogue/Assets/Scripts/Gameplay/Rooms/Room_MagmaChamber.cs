@@ -7,11 +7,8 @@ public class Room_MagmaChamber : MapUnitBehaviour
 {
     [SerializeField] private Team _targetTeam;
     [SerializeField] private int _damageAmount = 1;
-    [SerializeField] private float _fxStartDuration;
-    [SerializeField] private float _fxSecondStageDuration;
-    [SerializeField] private ParticleSystem _travellingParticles;
+    [SerializeField] private GameObject _fxObject;
     [SerializeField] private UnityEvent _onFXStart;
-    [SerializeField] private UnityEvent _onFXSecondStage;
 
     private MapUnit _targetUnit;
 
@@ -46,27 +43,11 @@ public class Room_MagmaChamber : MapUnitBehaviour
         }
         
         _onFXStart.Invoke();
-        yield return new WaitForSeconds(_fxStartDuration);
 
         var secondStageTimer = 0f;
-        _travellingParticles.transform.position = transform.position;
-        _travellingParticles.Play();
-        _onFXSecondStage.Invoke();
-
-        while (secondStageTimer < _fxSecondStageDuration)
-        {
-            var normalizedTimer = secondStageTimer / _fxSecondStageDuration;
-            _travellingParticles.transform.position = Vector2.Lerp(_travellingParticles.transform.position,
-                _targetUnit.transform.position, normalizedTimer);
-            secondStageTimer += Time.deltaTime;
-            yield return null;
-        }
-        
-        _travellingParticles.Stop();
+        Instantiate(_fxObject, transform.position, Quaternion.identity);
 
         DamageDetails damageDetails = new(_damageAmount);
         _targetUnit.Health.TryDamage(damageDetails);
-        
-        yield return null;
 	}
 }
