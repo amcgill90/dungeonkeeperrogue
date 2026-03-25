@@ -31,7 +31,11 @@ namespace DungeonKeeperRogue.Gameplay
             	_health.Init(_config.BaseHealth, _team);
 			}
 
-            _spriteRenderer.sprite = _config.Sprite;
+			if (_spriteRenderer != null && _config.Sprite != null)
+			{
+            	_spriteRenderer.sprite = _config.Sprite;
+			}
+			
 			_behaviour.Init();
 
             if (Scenario.Instance)
@@ -55,14 +59,14 @@ namespace DungeonKeeperRogue.Gameplay
             _health.TryDamage(details);
         }
 
-		public IEnumerator RunStartOfTurnBehaviour()
+		public IEnumerator RunStartOfTurnBehaviour(MapUnitBehaviourContext context)
 		{
-			yield return _behaviour.OnStartOfTurn(this);
+			yield return _behaviour.OnStartOfTurn(this, context);
 		}
         
-        public IEnumerator RunEndOfTurnBehaviour()
+        public IEnumerator RunEndOfTurnBehaviour(MapUnitBehaviourContext context)
         {
-            yield return _behaviour.OnEndOfTurn(this);
+            yield return _behaviour.OnEndOfTurn(this, context);
         }
 
         public void SetPosition(Vector2 position)

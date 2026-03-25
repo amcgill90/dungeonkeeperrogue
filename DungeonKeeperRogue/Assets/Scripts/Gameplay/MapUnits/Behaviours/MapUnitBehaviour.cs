@@ -9,13 +9,13 @@ namespace DungeonKeeperRogue.Gameplay
 		{
 		}
 
-        public virtual IEnumerator OnStartOfTurn(MapUnit unit)
+        public virtual IEnumerator OnStartOfTurn(MapUnit unit, MapUnitBehaviourContext context)
 		{
 			// override this to run behaviour at the start of the owning player's turn
 			yield return null;
 		}
 
-		public virtual IEnumerator OnEndOfTurn(MapUnit unit)
+		public virtual IEnumerator OnEndOfTurn(MapUnit unit, MapUnitBehaviourContext context)
 		{
 			// override this to run behaviour at the end of the owning player's turn
 			yield return null;

@@ -36,12 +36,14 @@ public class MapActor : MonoBehaviour
     {
         _isTurnComplete = false;
 
+		MapUnitBehaviourContext context = GenerateMapUnitBehaviourContext();
+
 		foreach (MapUnit unit in _units)
 		{
-			yield return unit.RunStartOfTurnBehaviour();
+			yield return unit.RunStartOfTurnBehaviour(context);
 		}
 
-        yield return OnTurnStartInternal();
+        yield return OnTurnStartInternal(context);
 
 		if (_autoCompleteTurns)
 		{
@@ -51,20 +53,35 @@ public class MapActor : MonoBehaviour
 
 	public IEnumerator OnTurnEnd()
 	{
-		yield return OnTurnEndInternal();
+		MapUnitBehaviourContext context = GenerateMapUnitBehaviourContext();
+
+		yield return OnTurnEndInternal(context);
 
 		foreach (MapUnit unit in _units)
 		{
-			yield return unit.RunEndOfTurnBehaviour();
+			yield return unit.RunEndOfTurnBehaviour(context);
 		}
 	}
 
-    protected virtual IEnumerator OnTurnStartInternal()
+	protected MapUnitBehaviourContext GenerateMapUnitBehaviourContext()
+	{
+		MapUnitBehaviourContext context = new();
+		PopulateMapUnitBehaviourContext(context);
+
+		return context;
+	}
+
+	protected virtual void PopulateMapUnitBehaviourContext(MapUnitBehaviourContext context)
+	{
+		
+	}
+
+    protected virtual IEnumerator OnTurnStartInternal(MapUnitBehaviourContext context)
     {
         yield return null;
     }
 
-	protected virtual IEnumerator OnTurnEndInternal()
+	protected virtual IEnumerator OnTurnEndInternal(MapUnitBehaviourContext context)
     {
         yield return null;
     }

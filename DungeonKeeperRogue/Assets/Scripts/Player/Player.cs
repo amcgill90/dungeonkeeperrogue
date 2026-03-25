@@ -17,6 +17,7 @@ public class Player : MapActor
 	public Hand Hand => _hand;
 	public PlayerInput Input => _input;
 	public int Coins => _coins;
+	public int CardsToDrawEachTurn => _cardsToDrawEachTurn;
 
 	public delegate void CoinsChangedDelegate(int change, int newAmount);
 	public static event CoinsChangedDelegate OnCoinsChanged;
@@ -47,16 +48,23 @@ public class Player : MapActor
 		_hand.gameObject.SetActive(active);
 	}
 
-	protected override IEnumerator OnTurnStartInternal()
+	protected override void PopulateMapUnitBehaviourContext(MapUnitBehaviourContext context)
+	{
+		base.PopulateMapUnitBehaviourContext(context);
+
+		context.cardsToDraw = _cardsToDrawEachTurn;
+	}
+
+	protected override IEnumerator OnTurnStartInternal(MapUnitBehaviourContext context)
 	{
 		AddCoins(_coinsToAwardEachTurn);
 		SetHandActive(true);
-		DrawCardsToHand();
+		DrawCardsToHand(context.cardsToDraw);
 
 		yield return RunPlayCardsTurn();
 	}
 
-	protected override IEnumerator OnTurnEndInternal()
+	protected override IEnumerator OnTurnEndInternal(MapUnitBehaviourContext context)
 	{
 		SetHandActive(false);
 
@@ -85,9 +93,9 @@ public class Player : MapActor
 		OnCoinsChanged?.Invoke(amount, _coins);
 	}
 
-	private void DrawCardsToHand()
+	private void DrawCardsToHand(int amount)
 	{
-		List<Card> cards = _deck.DrawCards(_cardsToDrawEachTurn);
+		List<Card> cards = _deck.DrawCards(amount);
 		if (cards.Count == 0)
 		{
 			return;

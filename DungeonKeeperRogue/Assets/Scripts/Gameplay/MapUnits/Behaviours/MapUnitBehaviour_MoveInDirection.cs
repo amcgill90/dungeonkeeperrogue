@@ -7,7 +7,7 @@ public class MapUnitBehaviour_MoveInDirection : MapUnitBehaviour
     [SerializeField] private float _moveSeconds;
     [SerializeField] private Vector2 _moveDirection;
     
-    public override IEnumerator OnStartOfTurn(MapUnit unit)
+    public override IEnumerator OnStartOfTurn(MapUnit unit, MapUnitBehaviourContext context)
     {
         Vector2 moveDir = _moveDirection.normalized;
         moveDir.x *= Scenario.Instance.Map.NodeXInc;

@@ -2,7 +2,7 @@ using System.Collections;
 using DungeonKeeperRogue.Gameplay;
 using UnityEngine;
 
-public abstract class Room : MapUnitBehaviour
+public class Room : MapUnit
 {
 	private static readonly NodeSelectionFilterOptions nodeSelectOptions = new NodeSelectionFilterOptions()
 	{

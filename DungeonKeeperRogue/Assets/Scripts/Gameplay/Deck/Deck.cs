@@ -36,6 +36,15 @@ public class Deck : MonoBehaviour
 		_cards.Shuffle();
 	}
 
+	public void DiscardCards(List<Card> cards)
+	{
+		foreach (Card card in cards)
+		{
+			_cards.Remove(card);
+			_discardPile.Add(card);
+		}
+	}
+
 	public void Clear()
 	{
 		RefreshFromDiscardPile();
@@ -57,8 +66,9 @@ public class Deck : MonoBehaviour
 		{
 			if (_cards.Count == 0)
 			{
-				// no more cards available, refresh from discard pile
+				// no more cards available, refresh from discard pile and immediately discard cards picked (so we don't pick again)
 				RefreshFromDiscardPile();
+				DiscardCards(cards);
 			}
 
 			int index = _random.Next(_cards.Count);

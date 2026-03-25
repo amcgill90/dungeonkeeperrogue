@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8008113793216900608}
+  - component: {fileID: -6364110233194997884}
   - component: {fileID: 3169895096396555582}
   m_Layer: 0
   m_Name: Room_Library
@@ -33,6 +34,22 @@ Transform:
   - {fileID: 57174357050399540}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-6364110233194997884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241571914259367845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ef2a82d3b8df46c591948a6f695832c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Room
+  _config: {fileID: 11400000, guid: 6a1f035e146b949ada4e936e08c3d9d6, type: 2}
+  _health: {fileID: 0}
+  _spriteRenderer: {fileID: 8118238266824464665}
+  _behaviour: {fileID: 3169895096396555582}
 --- !u!114 &3169895096396555582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,6 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19bf9f38655248c5ad876cedb31f2dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Room_DrawCardBuff
+  _amount: 1
 --- !u!1 &6983206536984579627
 GameObject:
   m_ObjectHideFlags: 0
