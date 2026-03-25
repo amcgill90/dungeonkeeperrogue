@@ -14,12 +14,12 @@ public class HUDCombatInfo : MonoSingleton<HUDCombatInfo>
     
     protected override void OnInitialized()
     {
-        // TODO: subscribe to events
+        Player.OnCoinsChanged += OnCoinsChanged;
     }
 
     private void OnDestroy()
     {
-        // TODO: unsubscribe to events
+        Player.OnCoinsChanged -= OnCoinsChanged;
     }
 
     private void OnCombatStart()
@@ -33,9 +33,9 @@ public class HUDCombatInfo : MonoSingleton<HUDCombatInfo>
         ShowEndTurnButton();
     }
 
-    private void OnCoinsChanged()
+    private void OnCoinsChanged(int change, int newAmount)
     {
-        var coinCountString = "3";
+        _currentGoldText.text = newAmount.ToString();
     }
 
     private void OnBossHealthChange()

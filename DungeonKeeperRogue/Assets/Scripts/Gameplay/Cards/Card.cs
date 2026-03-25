@@ -19,6 +19,7 @@ public class Card : MonoBehaviour
 	[SerializeField] private TMP_Text _descriptionTextField;
 	[SerializeField] private SpriteRenderer _iconSpriteRenderer;
 	[SerializeField] private TMP_Text _costTextField;
+	[SerializeField] private Color _cantPlayColour;
 
 	[Header("Events")]
 	[SerializeField] private UnityEvent _onHighlightedEvent;
@@ -29,6 +30,7 @@ public class Card : MonoBehaviour
 
 	public CardType CardType => _cardType;
 	public bool IsPlaying => _isPlaying;
+	public int Cost => _goldCost;
 
 
 	private void OnEnable()
@@ -46,8 +48,31 @@ public class Card : MonoBehaviour
 		_costTextField.SetText(_goldCost.ToString());
 	}
 
+	private void Update()
+	{
+		UpdatePlayable();
+	}
+
+	public bool GetCanPlay()
+	{
+		if (_owner == null)
+		{
+			return false;
+		}
+
+		bool isRoomPlayable = _cardType != CardType.Room
+			|| Map.Instance.CanRoomBePlayed();
+
+		return _owner.Coins >= _goldCost && isRoomPlayable;
+	}
+
 	public IEnumerator PlayCard()
 	{
+		if (GetCanPlay() == false)
+		{
+			yield break;
+		}
+
 		GameObject go = Instantiate(_prefabToSpawn, transform.position, Quaternion.identity);
 		Spell spell = go.GetComponentInChildren<Spell>();
 		Room room = go.GetComponentInChildren<Room>();
@@ -70,6 +95,12 @@ public class Card : MonoBehaviour
 
 	public void SetHighlighted(bool highlight)
 	{
+		if (GetCanPlay() == false)
+		{
+			_onStopHighlightedEvent?.Invoke();
+			return;
+		}
+
 		if (highlight)
 		{
 			_onHighlightedEvent?.Invoke();
@@ -77,5 +108,10 @@ public class Card : MonoBehaviour
 		}
 		
 		_onStopHighlightedEvent?.Invoke();
+	}
+
+	public void UpdatePlayable()
+	{
+		_costTextField.color = GetCanPlay() ? Color.white : _cantPlayColour;
 	}
 }

@@ -193,6 +193,19 @@ public class Map : MonoSingleton<Map>
 		return false;
 	}
 
+	public bool CanRoomBePlayed()
+	{
+		foreach (MapNode node in _mapNodes)
+		{
+			if (IsNodeControlledByPlayer(node) && node.HasRoom == false)
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	public MapNode FindNodeWithTag(NodeTag nodeTag)
 	{
 		int rows = _mapNodes.GetLength(0);

@@ -83,7 +83,7 @@ public class Hand : MonoBehaviour
 	public void UpdateCardsLayout()
 	{
 		float cardInc = _cards.Count > 1 ? _handArea.bounds.size.x / (_cards.Count - 1) : 0f;
-		float cardOffset = _handArea.bounds.center.x - cardInc * (_cards.Count / 2);
+		float cardOffset = _handArea.bounds.center.x - _handArea.bounds.size.x * 0.5f;
 
 		for (int i = 0; i < _cards.Count; ++i)
 		{
@@ -92,15 +92,21 @@ public class Hand : MonoBehaviour
 		}
 	}
 
+	public void DiscardCard(Card card)
+	{
+		card.transform.SetParent(_owner.Deck.transform);
+		card.gameObject.SetActive(false);
+
+		_cards.Remove(card);
+		UpdateCardsLayout();
+	}
+
 	public void DiscardCards()
 	{
 		// cards are discarded as soon as they are added to the hand, so we just give them back to the deck and turn them off
-		foreach (Card card in _cards)
+		foreach (Card card in new List<Card>(_cards))
 		{
-			card.transform.SetParent(_owner.Deck.transform);
-			card.gameObject.SetActive(false);
+			DiscardCard(card);
 		}
-
-		_cards.Clear();
 	}
 }

@@ -95,9 +95,12 @@ public class PlayerInput : MonoBehaviour
 			_lastHighlightedCard = cardUnderMouse;
 
 			// handle click of card
-			if (cardUnderMouse != null && mouse.leftButton.wasPressedThisFrame)
+			if (cardUnderMouse != null && mouse.leftButton.wasPressedThisFrame && cardUnderMouse.GetCanPlay())
 			{
 				yield return PlayCard(cardUnderMouse);
+
+				_player.AddCoins(-cardUnderMouse.Cost);
+				_player.Hand.DiscardCard(cardUnderMouse);
 			}
 		}
 		else

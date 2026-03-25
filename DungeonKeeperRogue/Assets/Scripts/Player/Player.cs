@@ -18,6 +18,9 @@ public class Player : MapActor
 	public PlayerInput Input => _input;
 	public int Coins => _coins;
 
+	public delegate void CoinsChangedDelegate(int change, int newAmount);
+	public static event CoinsChangedDelegate OnCoinsChanged;
+
 
 	private void OnDestroy()
 	{
@@ -46,6 +49,7 @@ public class Player : MapActor
 
 	protected override IEnumerator OnTurnStartInternal()
 	{
+		AddCoins(_coinsToAwardEachTurn);
 		SetHandActive(true);
 		DrawCardsToHand();
 
@@ -74,15 +78,11 @@ public class Player : MapActor
 		_isTurnComplete = true;
 	}
 
-	public void StartTurn()
-	{
-		_coins += _coinsToAwardEachTurn;
-		DrawCardsToHand();
-	}
-
 	public void AddCoins(int amount)
 	{
 		_coins += amount;
+
+		OnCoinsChanged?.Invoke(amount, _coins);
 	}
 
 	private void DrawCardsToHand()
