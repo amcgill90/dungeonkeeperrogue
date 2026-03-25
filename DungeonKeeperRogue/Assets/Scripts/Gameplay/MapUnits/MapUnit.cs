@@ -24,8 +24,14 @@ namespace DungeonKeeperRogue.Gameplay
         private void Start()
         {
             _team = _config.Team;
-            _health.Init(_config.BaseHealth, _team);
+
+			if (_health != null)
+			{
+            	_health.Init(_config.BaseHealth, _team);
+			}
+
             _spriteRenderer.sprite = _config.Sprite;
+			_behaviour.Init();
 
             if (Scenario.Instance)
             {
@@ -40,18 +46,22 @@ namespace DungeonKeeperRogue.Gameplay
 
         public void ProcessDamage(DamageDetails details)
         {
+			if (_health == null)
+			{
+				return;
+			}
+
             _health.TryDamage(details);
         }
+
+		public IEnumerator RunStartOfTurnBehaviour()
+		{
+			yield return _behaviour.OnStartOfTurn(this);
+		}
         
-        public void RunBehavior()
+        public IEnumerator RunEndOfTurnBehaviour()
         {
-            _activeBehaviour ??= StartCoroutine(RunBehaviorRoutine());
-        }
-        
-        private IEnumerator RunBehaviorRoutine()
-        {
-            yield return _behaviour.Run(this);
-            _activeBehaviour = null;
+            yield return _behaviour.OnEndOfTurn(this);
         }
 
         public void SetPosition(Vector2 position)

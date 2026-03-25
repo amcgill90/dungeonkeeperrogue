@@ -11,7 +11,7 @@ namespace DungeonKeeperRogue.Gameplay
         private bool _isInitialised;
         private Team _currentTeam;
         private Scenario _scenario;
-        private Coroutine _currentAction;
+		private bool _isRunningEndOfTurn = false;
 
         public Team CurrentTeam => _currentTeam;
         
@@ -25,11 +25,6 @@ namespace DungeonKeeperRogue.Gameplay
             _scenario = scenario;
             _isInitialised = true;
         }
-        
-        private void Awake()
-        {
-            TurnAction.OnActionTriggered += OnTurnActionTriggered;
-        }
 
         private void Start()
         {
@@ -37,59 +32,53 @@ namespace DungeonKeeperRogue.Gameplay
             StartTurn();
         }
 
-        private void OnDestroy()
-        {
-            TurnAction.OnActionTriggered -= OnTurnActionTriggered;
-        }
-        
-        private void OnTurnActionTriggered(TurnAction action)
-        {
-            StartTurnAction(action);
-        }
-
         private void Update()
         {
-            if (_isRunning && _isInitialised && _currentAction == null && IsTurnComplete())
+            if (_isRunning && _isInitialised && _isRunningEndOfTurn == false && IsTurnComplete())
             {
                 EndTurnAndStartNext();
             }
         }
         
-        public void Stop()
-        {
-            _isRunning = false;
-            
-            if (_currentAction != null) 
-            {
-                StopCoroutine(_currentAction);
-            }
-
-            _currentAction = null;
-        }
-        
         private void EndTurnAndStartNext()
         {
-            OnTurnEnd?.Invoke(_currentTeam);
-            _currentTeam = _currentTeam == Team.Player ? Team.Enemy : Team.Player;
-            StartTurn();
+            StartCoroutine(RunEndTurn());
         }
+
+		private IEnumerator RunEndTurn()
+		{
+			_isRunningEndOfTurn = true;
+
+			yield return _scenario.GetMapActorForTeam(_currentTeam).OnTurnEnd();
+
+			OnTurnEnd?.Invoke(_currentTeam);
+
+			_isRunningEndOfTurn = false;
+
+			Team winningTeam;
+			if (_scenario.IsComplete(out winningTeam))
+			{
+				_isRunning = false;
+				yield break;
+			}
+
+			_currentTeam = _currentTeam == Team.Player ? Team.Enemy :  Team.Player;
+            StartTurn();
+		}
 
         private void StartTurn()
         {
-            Debug.Log($"[TurnController]: starting turn {_currentTeam}");
-            OnTurnStart?.Invoke(_currentTeam);
+            StartCoroutine(RunStartTurn());
         }
 
-        private void StartTurnAction(TurnAction action)
-        {
-            _currentAction ??= StartCoroutine(RunAction(action));
-        }
+		private IEnumerator RunStartTurn()
+		{
+			Debug.Log($"[TurnController]: starting turn {_currentTeam}");
+			
+			OnTurnStart?.Invoke(_currentTeam);
 
-        private IEnumerator RunAction(TurnAction action)
-        {
-            yield return action.Run();
-            _currentAction = null;
-        }
+			yield return _scenario.GetMapActorForTeam(_currentTeam).OnTurnStart();
+		}
 
         private bool IsTurnComplete()
         {

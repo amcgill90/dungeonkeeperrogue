@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +17,12 @@ public class Player : MapActor
 	public Hand Hand => _hand;
 	public PlayerInput Input => _input;
 	public int Coins => _coins;
+
+
+	private void OnDestroy()
+	{
+		HUDCombatInfo.OnEndTurn -= OnEndTurn;
+	}
 	
 	public override void Init()
 	{
@@ -30,9 +37,6 @@ public class Player : MapActor
 		_hand.Init(this);
 
 		_input.Init(this);
-
-		// testing
-		StartTurn();
 	}
 
 	private void SetHandActive(bool active)
@@ -40,14 +44,33 @@ public class Player : MapActor
 		_hand.gameObject.SetActive(active);
 	}
 
-	protected override void OnTurnStartInternal()
+	protected override IEnumerator OnTurnStartInternal()
 	{
 		SetHandActive(true);
+		DrawCardsToHand();
+
+		yield return RunPlayCardsTurn();
+	}
+
+	protected override IEnumerator OnTurnEndInternal()
+	{
+		SetHandActive(false);
+
+		_hand.DiscardCards();
+
+		yield return null;
+	}
+
+	private IEnumerator RunPlayCardsTurn()
+	{
+		while (IsTurnComplete == false)
+		{
+			yield return _input.ProcessInput();
+		}
 	}
 
 	private void OnEndTurn()
 	{
-		SetHandActive(false);
 		_isTurnComplete = true;
 	}
 

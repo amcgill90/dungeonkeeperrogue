@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+using System.Collections;
+using System.Collections.Generic;
 using DungeonKeeperRogue.Gameplay;
 using UnityEngine;
 
@@ -14,14 +15,9 @@ public class MapActor : MonoBehaviour
     public int UnitCount => _units.Count;
     public bool IsTurnComplete => IsTurnCompleteInternal();
 
-    private void Awake()
-    {
-        TurnController.OnTurnStart += OnTurnStart;
-    }
 
     private void OnDestroy()
     {
-        TurnController.OnTurnStart -= OnTurnStart;
         OnDestroyInternal();
     }
 
@@ -31,32 +27,46 @@ public class MapActor : MonoBehaviour
 
     public virtual void Init() { }
 	
-    private void OnTurnStart(Team team)
+    public IEnumerator OnTurnStart()
     {
-        if (team != _team)
-        {
-            return;
-        }
-
-        OnTurnStartInternal();
-        
         _isTurnComplete = false;
-        _units.ForEach(u => u.RunBehavior());
+
+		foreach (MapUnit unit in _units)
+		{
+			yield return unit.RunStartOfTurnBehaviour();
+		}
+
+        yield return OnTurnStartInternal();
+
+		if (_autoCompleteTurns)
+		{
+			_isTurnComplete = true;
+		}
     }
 
-    protected virtual void OnTurnStartInternal() { }
+	public IEnumerator OnTurnEnd()
+	{
+		yield return OnTurnEndInternal();
+
+		foreach (MapUnit unit in _units)
+		{
+			yield return unit.RunEndOfTurnBehaviour();
+		}
+	}
+
+    protected virtual IEnumerator OnTurnStartInternal()
+    {
+        yield return null;
+    }
+
+	protected virtual IEnumerator OnTurnEndInternal()
+    {
+        yield return null;
+    }
 
     private bool IsTurnCompleteInternal()
     {
-        foreach (MapUnit unit in _units)
-        {
-            if (unit.IsRunningBehaviour)
-            {
-                return false;
-            }
-        }
-        
-        return _autoCompleteTurns || _isTurnComplete;
+        return _isTurnComplete;
     }
     
     public void RegisterUnit(MapUnit unit)

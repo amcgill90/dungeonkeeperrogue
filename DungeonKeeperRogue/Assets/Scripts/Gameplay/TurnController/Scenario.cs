@@ -27,6 +27,7 @@ namespace DungeonKeeperRogue.Gameplay
         public delegate void ScenarioEndEvent(Team winner);
         public event ScenarioEndEvent OnScenarioEnd;
         
+
         protected override void OnInitialized()
         {
             _player = SpawnMapActor(_playerPrefab);
@@ -38,23 +39,14 @@ namespace DungeonKeeperRogue.Gameplay
         {
             _playerBaseNode = _map.FindNodeWithTag(_playerBaseNodeTag);
         }
-        
-        private void LateUpdate()
-        {
-            UpdateScenarioOutcome();
-        }
 
-        private void UpdateScenarioOutcome()
+        public bool IsComplete(out Team winner)
         {
-            if (_isScenarioComplete)
-            {
-                return;
-            }
+			winner = Team.Neutral;
             
-            Team winningTeam = Team.Neutral;
             if (_enemy.UnitCount == 0)
             {
-                winningTeam = Team.Player;
+                winner = Team.Player;
                 _isScenarioComplete = true;
             }
             else
@@ -67,7 +59,7 @@ namespace DungeonKeeperRogue.Gameplay
                         continue;
                     }
                     
-                    winningTeam = Team.Enemy;
+                    winner = Team.Enemy;
                     _isScenarioComplete = true;
                     break;
                 }
@@ -75,12 +67,13 @@ namespace DungeonKeeperRogue.Gameplay
 
             if (_isScenarioComplete == false)
             {
-                return;
+                return false;
             }
             
-            Debug.Log($"[Scenario]: scenario won by {winningTeam}!");
-            _turnController.Stop();
-            OnScenarioEnd?.Invoke(winningTeam);
+            Debug.Log($"[Scenario]: scenario won by {winner}!");
+            OnScenarioEnd?.Invoke(winner);
+
+			return true;
         }
 
         private T SpawnMapActor<T>(T prefab) where T : MapActor
@@ -94,5 +87,10 @@ namespace DungeonKeeperRogue.Gameplay
         {
             (unit.Team == Team.Player ? _player : _enemy).RegisterUnit(unit);
         }
+
+		public MapActor GetMapActorForTeam(Team team)
+		{
+			return team == Team.Player ? _player : _enemy;
+		}
     }
 }

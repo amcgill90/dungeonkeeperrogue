@@ -1,10 +1,9 @@
 using System.Collections;
+using DungeonKeeperRogue.Gameplay;
 using UnityEngine;
 
-public class Room : MonoBehaviour
+public abstract class Room : MapUnitBehaviour
 {
-	protected Player _owner;
-
 	private static readonly NodeSelectionFilterOptions nodeSelectOptions = new NodeSelectionFilterOptions()
 	{
 		controlled = SelectionFilter.True,
@@ -12,24 +11,20 @@ public class Room : MonoBehaviour
 	};
 
 
-	public void Init(Player owner)
-	{
-		_owner = owner;
-	}
-
 	public IEnumerator PlaceRoom()
 	{
 		MapNode placeOnNode = null;
+		PlayerInput input = Scenario.Instance.Player.Input;
 
 		while (placeOnNode == null)
 		{
-			placeOnNode = _owner.Input.DoMapNodeSelection(nodeSelectOptions);
+			placeOnNode = input.DoMapNodeSelection(nodeSelectOptions);
 
 			yield return null;
 		}
 
 		placeOnNode.AddRoom(this);
 
-		_owner.Input.DoMapNodeSelection(null);
+		input.DoMapNodeSelection(null);
 	}
 }

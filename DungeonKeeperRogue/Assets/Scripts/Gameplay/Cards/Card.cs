@@ -62,7 +62,6 @@ public class Card : MonoBehaviour
 
 		if (room != null)
 		{
-			room.Init(_owner);
 			yield return room.PlaceRoom();
 		}
 

@@ -51,11 +51,11 @@ public class PlayerInput : MonoBehaviour
 		return mouse.leftButton.wasPressedThisFrame ? nodeUnderMouse : null;
 	}
 
-	private void Update()
+	public IEnumerator ProcessInput()
 	{
 		if (_player == null)
 		{
-			return;
+			yield return null;
 		}
 
 		var mouse = UnityEngine.InputSystem.Mouse.current;
@@ -97,7 +97,7 @@ public class PlayerInput : MonoBehaviour
 			// handle click of card
 			if (cardUnderMouse != null && mouse.leftButton.wasPressedThisFrame)
 			{
-				StartCoroutine(PlayCard(cardUnderMouse));
+				yield return PlayCard(cardUnderMouse);
 			}
 		}
 		else
@@ -110,6 +110,8 @@ public class PlayerInput : MonoBehaviour
 	private IEnumerator PlayCard(Card card)
 	{
 		_cardBeingPlayed = card;
+
+		_player.Hand.Show(false);
 
 		yield return card.PlayCard();
 
