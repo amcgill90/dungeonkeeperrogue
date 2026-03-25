@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cefd36e2a040462ca5e9581b13d9ff0f, type: 3}
   m_Name: Map_01_Rewards
   m_EditorClassIdentifier: Assembly-CSharp::MapNodeRewardsConfig
+  RewardChance: 0
+  RewardCount: 5
   Rewards:
   - {fileID: 1042616778281392755, guid: a3a2ee0ab3893984eb476f1e026f6e91, type: 3}
-  RewardChance: 0.5

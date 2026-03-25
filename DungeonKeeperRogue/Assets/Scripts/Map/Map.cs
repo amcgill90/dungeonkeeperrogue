@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using PrototypingTools.Utils;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Map : MonoSingleton<Map>
@@ -33,6 +35,7 @@ public class Map : MonoSingleton<Map>
 		_currentConfig = config;
 
 		InstantiateNodes();
+		AssignRewards();
 		ShowNodeHighlights(null, null);
 	}
 
@@ -82,6 +85,32 @@ public class Map : MonoSingleton<Map>
 
 				_mapNodes[x, y] = newNode;
 			}
+		}
+	}
+	
+	private void AssignRewards()
+	{
+		var nodes = new List<int2>(_currentConfig.Resolution.x * _currentConfig.Resolution.y);
+		for (int x = 0; x < _currentConfig.Resolution.x; ++x)
+		{
+			for (int y = 0; y < _currentConfig.Resolution.y; ++y)
+			{
+				var index = new int2(x, y);
+				nodes.Add(index);
+			}
+		}
+		
+		nodes.Shuffle();
+		var assignedRewards = 0;
+		for (int i = 0; i < nodes.Count; i++)
+		{
+			var mapNode = _mapNodes[nodes[i].x, nodes[i].y];
+			if (mapNode == false || mapNode.CanContainReward == false || mapNode.Reward) continue;
+
+			mapNode.AssignReward(_currentConfig.RewardsConfig.GetRandomReward());
+			
+			assignedRewards++;
+			if (assignedRewards >= _currentConfig.RewardsConfig.RewardCount) break;
 		}
 	}
 
