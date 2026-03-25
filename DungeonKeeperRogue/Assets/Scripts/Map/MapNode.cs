@@ -16,6 +16,7 @@ public class MapNode : MonoBehaviour
 	[SerializeField] private SpriteRenderer _highlight;
 	[SerializeField] private Color _highlightOptionColour;
 	[SerializeField] private GameObject _isControlledHighlight;
+	[SerializeField] private GameObject _rewardHint;
 	
 	private Vector2Int _coordinates;
 	private GameObject _instancedObject;
@@ -63,6 +64,7 @@ public class MapNode : MonoBehaviour
 
 		SetHighlighted(HighlightState.None);
 		ShowControlled(false);
+		ShowRewardHint(false);
 	}
 
 	public void AssignReward(MapNodeReward reward)
@@ -81,6 +83,11 @@ public class MapNode : MonoBehaviour
 	public void ShowControlled(bool show)
 	{
 		_isControlledHighlight.SetActive(show);
+	}
+
+	public void ShowRewardHint(bool show)
+	{
+		_rewardHint.SetActive(show && _reward != null && Diggable != null);
 	}
 
 	public void AddRoom(Room room)

@@ -119,9 +119,11 @@ public class Map : MonoSingleton<Map>
 		foreach (MapNode node in _mapNodes)
 		{
 			bool isControlled = IsNodeControlledByPlayer(node);
+			bool isAdjacentToControlled = IsAdjacentNodeControlledByPlayer(node);
 			bool isOption = options != null && options.IsValidOption(node);
 
 			node.ShowControlled(isControlled);
+			node.ShowRewardHint(isAdjacentToControlled);
 			node.SetHighlighted(isOption ? (hovered == node ? MapNode.HighlightState.Hovered : MapNode.HighlightState.Option) : MapNode.HighlightState.None);
 		}
 	}
