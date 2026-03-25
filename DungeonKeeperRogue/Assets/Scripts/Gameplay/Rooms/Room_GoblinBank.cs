@@ -20,11 +20,12 @@ public class Room_GoblinBank : MapUnitBehaviour
             yield break;
         }
         
-        yield return new WaitForSeconds(_duration);
-
         var flyingText = Instantiate(_flyingTextFX, transform.position, Quaternion.identity);
         flyingText.Init(_goldGain.ToString());
         Scenario.Instance.Player.AddCoins(_goldGain);
+        
+        yield return new WaitForSeconds(_duration);
+        
         ++_turnCounter;
 
         if (_turnCounter < _maxTurns)

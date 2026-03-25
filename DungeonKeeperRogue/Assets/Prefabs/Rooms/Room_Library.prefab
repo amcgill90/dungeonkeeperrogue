@@ -63,6 +63,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Room_DrawCardBuff
   _amount: 1
+  _flyingTextFX: {fileID: 563122732018579175, guid: f02a65d52895cdf43a716edb7aa072ae, type: 3}
+  _duration: 0.2
 --- !u!1 &6983206536984579627
 GameObject:
   m_ObjectHideFlags: 0

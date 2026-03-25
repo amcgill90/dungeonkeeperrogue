@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spell_Dig
   _digsAllowed: 2
+  _digFXPrefab: {fileID: 4596733818714642932, guid: 915f137a2d1b374498e8f45910729e1b, type: 3}

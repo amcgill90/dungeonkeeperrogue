@@ -46,3 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Spell_DamageRandom
   _targetTeam: 1
   _damageToDeal: 3
+  _fxObject: {fileID: 4596733818714642932, guid: 8e51600ee36a25546b2e47256ce064ab, type: 3}
+  _spawnPositionDelta: {x: -1.5, y: 1.5}
+  _damageDelay: 0.2
