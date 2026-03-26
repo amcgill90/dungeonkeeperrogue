@@ -4,10 +4,18 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MapNodeRewardsConfig", menuName = "DungeonKeeperRogue/Reward/Config")]
 public class MapNodeRewardsConfig : ScriptableObject
 {
+	[System.Serializable]
+	public class ForcedReward
+	{
+		public int forceCount = 0;
+		public MapNodeReward reward;
+	}
+
 	public float RewardChance = 0.5f;
 	public int RewardCount = 5;
 	
 	public List<MapNodeReward> Rewards;
+	public List<ForcedReward> ForcedRewards;
 
 	public MapNodeReward GetRandomReward()
 	{

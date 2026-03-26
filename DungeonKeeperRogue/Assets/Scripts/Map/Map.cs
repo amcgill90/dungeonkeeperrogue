@@ -102,14 +102,37 @@ public class Map : MonoSingleton<Map>
 		
 		nodes.Shuffle();
 		var assignedRewards = 0;
+		List<MapNodeRewardsConfig.ForcedReward> forcedRewardConfig = new(_currentConfig.RewardsConfig.ForcedRewards);
+		
+		// break forced rewards into a flat list, then shuffle
+		List<MapNodeReward> forcedRewards = new();
+		foreach (MapNodeRewardsConfig.ForcedReward forcedReward in forcedRewardConfig)
+		{
+			for (int i = 0; i < forcedReward.forceCount; ++i)
+			{
+				forcedRewards.Add(forcedReward.reward);
+			}
+		}
+		forcedRewards.Shuffle();
+
 		for (int i = 0; i < nodes.Count; i++)
 		{
 			var mapNode = _mapNodes[nodes[i].x, nodes[i].y];
 			if (mapNode == false || mapNode.CanContainReward == false || mapNode.Reward) continue;
 
-			mapNode.AssignReward(_currentConfig.RewardsConfig.GetRandomReward());
+			if (forcedRewards.Count > 0)
+			{
+				// pick forced rewards first
+				mapNode.AssignReward(forcedRewards[0]);
+				forcedRewards.RemoveAt(0);
+			}
+			else
+			{
+				// no more forced rewards, so assign random one now
+				mapNode.AssignReward(_currentConfig.RewardsConfig.GetRandomReward());
+				assignedRewards++;
+			}
 			
-			assignedRewards++;
 			if (assignedRewards >= _currentConfig.RewardsConfig.RewardCount) break;
 		}
 	}
