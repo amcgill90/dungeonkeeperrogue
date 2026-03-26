@@ -12,7 +12,7 @@ public class Hand : MonoBehaviour
 	[SerializeField] private float _hideDuration;
 
 	private Player _owner;
-	private bool _shown = false;
+	private bool _shown = true;
 	private float _animTimer = 0f;
 	private float _activeAnimDuration = 0f;
 	private Vector3 _startPos;
