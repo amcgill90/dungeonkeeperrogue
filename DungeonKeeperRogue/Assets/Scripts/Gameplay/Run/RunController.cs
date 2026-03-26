@@ -10,6 +10,7 @@ namespace DungeonKeeperRogue.Gameplay.Run
     {
         [SerializeField] private PlayerManager _playerManager;
         [SerializeField] private List<SceneReference> _scenarios = new();
+        [SerializeField] private bool _autoPlayOnStart = true;
     
         private int _currentScenarioIndex;
         private SceneReference _currentScenario;
@@ -22,6 +23,11 @@ namespace DungeonKeeperRogue.Gameplay.Run
         private void OnDestroy()
         {
             Scenario.OnScenarioEnd -= OnScenarioEnd;
+        }
+
+        private void Start()
+        {
+	        if(_autoPlayOnStart) StartRun();
         }
 
         private void OnScenarioEnd(Team winner)
