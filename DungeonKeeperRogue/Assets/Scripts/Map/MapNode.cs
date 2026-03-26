@@ -17,6 +17,7 @@ public class MapNode : MonoBehaviour
 	[SerializeField] private Color _highlightOptionColour;
 	[SerializeField] private GameObject _isControlledHighlight;
 	[SerializeField] private SpriteRenderer _rewardHint;
+	[SerializeField] private Card _baseCardInfo;
 	
 	private Vector2Int _coordinates;
 	private GameObject _instancedObject;
@@ -35,6 +36,7 @@ public class MapNode : MonoBehaviour
 	public MapNodeReward Reward => _reward;
 	public bool HasRoom => _room != null || IsBase;
 	public Room Room => _room;
+	public Card Card => Room ? Room.Card : _baseCardInfo;
 
 
 	private void Awake()

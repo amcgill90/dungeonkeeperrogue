@@ -147,6 +147,10 @@ PrefabInstance:
       propertyPath: _isBase
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5049524645392234478, guid: a36790e1a1630401d9564c5b732b7f28, type: 3}
+      propertyPath: _baseCardInfo
+      value: 
+      objectReference: {fileID: 7067411791724215386, guid: f73525853237dc14da14632c9a7398a3, type: 3}
     - target: {fileID: 9189691260241261510, guid: a36790e1a1630401d9564c5b732b7f28, type: 3}
       propertyPath: m_Name
       value: Node_PlayerBase

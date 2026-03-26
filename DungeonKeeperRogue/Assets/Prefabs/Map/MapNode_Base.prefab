@@ -532,6 +532,7 @@ MonoBehaviour:
   _highlightOptionColour: {r: 0.21800464, g: 0.6509434, b: 0.27628487, a: 1}
   _isControlledHighlight: {fileID: 1638523889949802242}
   _rewardHint: {fileID: 3796393380229587088}
+  _baseCardInfo: {fileID: 0}
 --- !u!50 &5564693149545958086
 Rigidbody2D:
   serializedVersion: 5
