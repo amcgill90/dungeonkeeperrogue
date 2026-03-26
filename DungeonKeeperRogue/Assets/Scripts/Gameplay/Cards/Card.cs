@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class Card : MonoBehaviour
 
 	[Header("Card info")] 
 	[SerializeField] private string _name;
+	[SerializeField] private bool _hasModifiableDamage;
+	[SerializeField] private int _baseModifiableDamage;
 	[SerializeField] private string _description;
 	[SerializeField] private Sprite _icon;
 	[SerializeField] private int _goldCost;
@@ -32,9 +35,10 @@ public class Card : MonoBehaviour
 	public bool IsPlaying => _isPlaying;
 	public int Cost => _goldCost;
 	public string Name => _name;
-	public string Description => _description;
 	public Sprite Icon => _icon;
 
+	public static event Action<IntStatProperty> OnModifiableDamageDescriptionGenerated;
+	public static event Action OnCardPlayed;
 
 	private void OnEnable()
 	{
@@ -45,15 +49,45 @@ public class Card : MonoBehaviour
 	{
 		_owner = owner;
 		
+		SetCardInfo();
+
+		OnCardPlayed += SetCardInfo;
+	}
+
+	private void SetCardInfo()
+	{
 		_nameTextField.SetText(_name);
-		_descriptionTextField.SetText(_description);
+		_descriptionTextField.SetText(GetDescription());
 		_iconSpriteRenderer.sprite = _icon;
 		_costTextField.SetText(_goldCost.ToString());
+	}
+
+	private void OnDestroy()
+	{
+		OnCardPlayed -= SetCardInfo;
 	}
 
 	private void Update()
 	{
 		UpdatePlayable();
+	}
+
+	public string GetDescription()
+	{
+		if (_hasModifiableDamage == false)
+		{
+			return _description;
+		}
+
+		IntStatProperty damageStat = new IntStatProperty(_baseModifiableDamage);
+		OnModifiableDamageDescriptionGenerated?.Invoke(damageStat);
+
+		if (damageStat.GetCurrentValue() > damageStat.GetBaseValue())
+		{
+			return string.Format(_description, $"<b><color=#0022ff>{damageStat.GetCurrentValue()}</color></b>");
+		}
+		
+		return string.Format(_description, damageStat.GetCurrentValue());
 	}
 
 	public bool GetCanPlay()
@@ -94,6 +128,8 @@ public class Card : MonoBehaviour
 		}
 
 		_isPlaying = false;
+		
+		OnCardPlayed?.Invoke();
 	}
 
 	public void SetHighlighted(bool highlight)

@@ -73,7 +73,7 @@ public class PlayerInput : MonoBehaviour
 				var card = nodeUnderMouse.Card;
 				if (card)
 				{
-					HUDTileInfo.Instance.ShowTileInfo(card.Name, card.Description, card.Icon);
+					HUDTileInfo.Instance.ShowTileInfo(card.Name, card.GetDescription(), card.Icon);
 				}
 			}
 			else
