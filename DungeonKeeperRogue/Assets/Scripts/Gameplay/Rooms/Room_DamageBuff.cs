@@ -16,6 +16,7 @@ public class Room_DamageBuff : MapUnitBehaviour
 		base.Init();
 
 		Health.OnDamageAttemptedAll += OnDamageAttempted;
+		Card.OnModifiableDamageDescriptionGenerated += OnModifiableDescriptionGenerated;
 	}
 
 	protected override void OnDestroyInternal()
@@ -23,6 +24,7 @@ public class Room_DamageBuff : MapUnitBehaviour
 		base.OnDestroyInternal();
 
 		Health.OnDamageAttemptedAll -= OnDamageAttempted;
+		Card.OnModifiableDamageDescriptionGenerated -= OnModifiableDescriptionGenerated;
 	}
 
 	private void OnDamageAttempted(Health health, DamageDetails damageDetails)
@@ -36,5 +38,10 @@ public class Room_DamageBuff : MapUnitBehaviour
 
 		var flyingText = Instantiate(_flyingTextFX, transform.position, Quaternion.identity);
 		flyingText.Init(_buffAmount.ToString());
+	}
+
+	private void OnModifiableDescriptionGenerated(IntStatProperty damage)
+	{
+		damage.AddModifier(_buffAmount);
 	}
 }

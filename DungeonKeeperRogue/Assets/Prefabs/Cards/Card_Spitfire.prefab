@@ -70,12 +70,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8383202824859676916, guid: dff1b823ee7b44474abd63111a60ad4d, type: 3}
       propertyPath: _description
-      value: Deal 2 damage to the boss 4 times.
+      value: Deal {0} damage to the boss 4 times.
       objectReference: {fileID: 0}
     - target: {fileID: 8383202824859676916, guid: dff1b823ee7b44474abd63111a60ad4d, type: 3}
       propertyPath: _prefabToSpawn
       value: 
       objectReference: {fileID: 3628572930411390037, guid: 91f129b038bb30c47bc700cc698f6af1, type: 3}
+    - target: {fileID: 8383202824859676916, guid: dff1b823ee7b44474abd63111a60ad4d, type: 3}
+      propertyPath: _hasModifiableDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383202824859676916, guid: dff1b823ee7b44474abd63111a60ad4d, type: 3}
+      propertyPath: _baseModifiableDamage
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
