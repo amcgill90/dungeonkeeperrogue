@@ -11,6 +11,7 @@ public class Spell_DamageRandom : Spell
 	[SerializeField] private GameObject _fxObject;
 	[SerializeField] private Vector2 _spawnPositionDelta;
 	[SerializeField] private float _damageDelay;
+	[SerializeField] DamageSource _damageSourceOverride;
 
 	public override IEnumerator CastSpell()
 	{
@@ -35,7 +36,8 @@ public class Spell_DamageRandom : Spell
 		
 			yield return new WaitForSeconds(_damageDelay);
 		
-			DamageDetails damageDetails = new(_damageToDeal, DamageSource.Spell);
+			DamageSource damageSource = _damageSourceOverride != DamageSource.None ? _damageSourceOverride : DamageSource.Spell;
+			DamageDetails damageDetails = new(_damageToDeal, damageSource);
 			unit.Health.TryDamage(damageDetails);
 			
 			yield return new WaitForSeconds(_timeBetweenDamageInstances);
