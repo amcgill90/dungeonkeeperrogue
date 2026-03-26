@@ -337,6 +337,7 @@ MonoBehaviour:
   _enemyPrefab: {fileID: 1385316279389416183, guid: 8302fb5b79911da42b46ca383a506eee, type: 3}
   _map: {fileID: 116291786}
   _turnController: {fileID: 1089508835}
+  _winRewardOptions: {fileID: 11400000, guid: b21b2045a41f740ae974cdc628f75cf0, type: 2}
   _outcomePopup: {fileID: 2048860127}
 --- !u!1 &1089508834
 GameObject:

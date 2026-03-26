@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a11b7c604cfb642f3991e905a072bd4a, type: 3}
+  m_Name: ScenarioWinRewards
+  m_EditorClassIdentifier: Assembly-CSharp::CardList
+  _cards:
+  - {fileID: 4225025921467103237, guid: b5f49a0b1a44ac844b9987cc78090246, type: 3}
+  - {fileID: 4225025921467103237, guid: e4e82e6313e814961a798486b00e8f67, type: 3}
+  - {fileID: 4225025921467103237, guid: c54465cec09404e7bb67c6b2c7ba83b8, type: 3}
+  - {fileID: 7067411791724215386, guid: 6addc6a174c4a0f4b8feae6ecd024e87, type: 3}
+  - {fileID: 4225025921467103237, guid: 74342ef48f6c24f3d82e74133aeb4ec7, type: 3}
+  - {fileID: 3639537203014379381, guid: 642f351c82d84c14db047c934ffe9980, type: 3}
+  - {fileID: 4225025921467103237, guid: 506bfdf0c4462e64f88410b18982fcaf, type: 3}

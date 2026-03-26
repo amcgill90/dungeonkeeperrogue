@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using DungeonKeeperRogue.UI;
+using PrototypingTools.Utils;
 using UnityEngine;
 
 namespace DungeonKeeperRogue.Gameplay
@@ -14,6 +16,8 @@ namespace DungeonKeeperRogue.Gameplay
         [Header("Scenario Components")]
         [SerializeField] private Map _map;
         [SerializeField] private TurnController _turnController;
+		[SerializeField] private CardList _winRewardOptions;
+		[SerializeField] private int _winRewardCount = 3;
         [SerializeField] private UIScenarioOutcomePopup _outcomePopup;
 
         private bool _isScenarioComplete;
@@ -84,7 +88,21 @@ namespace DungeonKeeperRogue.Gameplay
             //Debug.Log($"[Scenario]: scenario won by {winner}!");
             
             _cachedWinner = winner;
-            _outcomePopup.Open(winner, () => OnScenarioEnd?.Invoke(_cachedWinner));
+
+			List<Card> rewardOptions = new(_winRewardOptions.Cards);
+			rewardOptions.Shuffle();
+			while (rewardOptions.Count > _winRewardCount)
+			{
+				rewardOptions.RemoveAt(rewardOptions.Count - 1);
+			}
+			
+            _outcomePopup.Open(winner, rewardOptions, (Card card) => {
+				if (card != null)
+				{
+					PlayerManager.PlayerState.Deck.Add(card);
+				}
+				OnScenarioEnd?.Invoke(_cachedWinner);
+			});
             _isScenarioComplete = true;
 			return true;
         }
