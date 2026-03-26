@@ -44,7 +44,7 @@ namespace DungeonKeeperRogue.Gameplay
         {
             StartCoroutine(RunEndTurn());
         }
-
+        
 		private IEnumerator RunEndTurn()
 		{
 			_isRunningEndOfTurn = true;
@@ -55,9 +55,8 @@ namespace DungeonKeeperRogue.Gameplay
 
 			_isRunningEndOfTurn = false;
             
-			if (_scenario.IsComplete(out Team winningTeam))
+			if (_scenario.IsComplete())
 			{
-				_isRunning = false;
 				yield break;
 			}
 

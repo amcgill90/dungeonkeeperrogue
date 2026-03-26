@@ -29,6 +29,7 @@ namespace DungeonKeeperRogue.Gameplay
 			if (_health != null)
 			{
             	_health.Init(_config.BaseHealth, _team);
+	            _health.OnDeath += OnDeath;
 			}
 
 			if (_spriteRenderer != null && _config.Sprite != null)
@@ -42,6 +43,11 @@ namespace DungeonKeeperRogue.Gameplay
             {
                 Scenario.Instance.RegisterUnit(this);  
             }
+        }
+
+        private void OnDeath()
+        {
+	        Destroy(gameObject);
         }
 
         private void OnDestroy()

@@ -17,6 +17,7 @@ namespace DungeonKeeperRogue.Gameplay
         [SerializeField] private UIScenarioOutcomePopup _outcomePopup;
 
         private bool _isScenarioComplete;
+        private Team _cachedWinner;
         private Player _player;
         private MapActor _enemy;
         private MapNode _playerBaseNode;
@@ -41,10 +42,19 @@ namespace DungeonKeeperRogue.Gameplay
             _playerBaseNode = _map.FindNodeWithTag(_playerBaseNodeTag);
         }
 
-        public bool IsComplete(out Team winner)
+        private void Update()
         {
-			winner = Team.Neutral;
-            
+            IsComplete();
+        }
+        
+        public bool IsComplete()
+        {
+            if (_isScenarioComplete)
+            {
+                return true;
+            }
+
+            Team winner = Team.Neutral;
             if (_enemy.UnitCount == 0)
             {
                 winner = Team.Player;
@@ -73,9 +83,9 @@ namespace DungeonKeeperRogue.Gameplay
             
             //Debug.Log($"[Scenario]: scenario won by {winner}!");
             
-            Team winningTeam = winner;
-            _outcomePopup.Open(winner, () => OnScenarioEnd?.Invoke(winningTeam));
-
+            _cachedWinner = winner;
+            _outcomePopup.Open(winner, () => OnScenarioEnd?.Invoke(_cachedWinner));
+            _isScenarioComplete = true;
 			return true;
         }
 
