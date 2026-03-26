@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DungeonKeeperRogue.Gameplay.MapUnitConfig
   _team: 1
   _sprite: {fileID: -5102523302120158241, guid: fca45dfd54a2b9e42a92458466aeb74f, type: 3}
-  _baseHealth: 40
+  _baseHealth: 33
