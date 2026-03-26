@@ -69,7 +69,7 @@ namespace DungeonKeeperRogue.Gameplay
                 foreach (MapUnit unit in _enemy.Units)
                 {
                     Vector2 dist = _playerBaseNode.WorldPos - unit.Position;
-                    if (Mathf.Approximately(dist.magnitude, 0f) == false)
+                    if (dist.magnitude > 0.01f)
                     {
                         continue;
                     }
